@@ -1,85 +1,46 @@
 import React from 'react';
-export function AnimatedBubbles() {
+
+interface AnimatedBubblesProps {
+  className?: string;
+}
+
+export function AnimatedBubbles({ className = '' }: AnimatedBubblesProps) {
+  const bubbles = [
+    { size: 'w-16 h-16', left: '10%', delay: '0s', duration: '4s' },
+    { size: 'w-12 h-12', left: '25%', delay: '0.5s', duration: '5s' },
+    { size: 'w-20 h-20', left: '45%', delay: '1s', duration: '6s' },
+    { size: 'w-10 h-10', left: '65%', delay: '1.5s', duration: '4.5s' },
+    { size: 'w-14 h-14', left: '80%', delay: '2s', duration: '5.5s' },
+    { size: 'w-8 h-8', left: '90%', delay: '2.5s', duration: '3.5s' },
+  ];
+
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      <div className="bubble bubble-1"></div>
-      <div className="bubble bubble-2"></div>
-      <div className="bubble bubble-3"></div>
-      <div className="bubble bubble-4"></div>
-      <div className="bubble bubble-5"></div>
-      <div className="bubble bubble-6"></div>
+    <div className={`absolute inset-0 overflow-hidden pointer-events-none ${className}`}>
+      {bubbles.map((b, i) => (
+        <div
+          key={i}
+          className={`absolute rounded-full ${b.size} bg-white/15 border border-white/20`}
+          style={{
+            bottom: '-100px',
+            left: b.left,
+            animation: `bubble-rise ${b.duration} ${b.delay} infinite linear, bubble-wobble ${b.duration} ${b.delay} infinite ease-in-out`,
+          }}
+        ></div>
+      ))}
+
       <style>{`
-        .bubble {
-          position: absolute;
-          border-radius: 50%;
-          background: rgba(255, 255, 255, 0.1);
-          animation: float 4s ease-in-out infinite;
+        @keyframes bubble-rise {
+          0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+          10% { opacity: 1; }
+          90% { opacity: 1; }
+          100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
         }
-        .bubble-1 {
-          width: 80px;
-          height: 80px;
-          left: 10%;
-          bottom: -100px;
-          animation-delay: 0s;
-          animation-duration: 4s;
-        }
-        .bubble-2 {
-          width: 60px;
-          height: 60px;
-          left: 25%;
-          bottom: -100px;
-          animation-delay: 0.5s;
-          animation-duration: 5s;
-        }
-        .bubble-3 {
-          width: 100px;
-          height: 100px;
-          left: 45%;
-          bottom: -100px;
-          animation-delay: 1s;
-          animation-duration: 6s;
-        }
-        .bubble-4 {
-          width: 50px;
-          height: 50px;
-          left: 65%;
-          bottom: -100px;
-          animation-delay: 1.5s;
-          animation-duration: 4.5s;
-        }
-        .bubble-5 {
-          width: 70px;
-          height: 70px;
-          left: 80%;
-          bottom: -100px;
-          animation-delay: 2s;
-          animation-duration: 5.5s;
-        }
-        .bubble-6 {
-          width: 40px;
-          height: 40px;
-          left: 90%;
-          bottom: -100px;
-          animation-delay: 2.5s;
-          animation-duration: 3.5s;
-        }
-        @keyframes float {
-          0% {
-            transform: translateY(0) rotate(0deg);
-            opacity: 0;
-          }
-          10% {
-            opacity: 1;
-          }
-          90% {
-            opacity: 1;
-          }
-          100% {
-            transform: translateY(-100vh) rotate(360deg);
-            opacity: 0;
-          }
+        @keyframes bubble-wobble {
+          0%, 100% { margin-left: 0px; }
+          25% { margin-left: 12px; }
+          75% { margin-left: -12px; }
         }
       `}</style>
-    </div>);
-
+    </div>
+  );
 }
