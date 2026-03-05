@@ -1,47 +1,39 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
+import { FloatingContactBar } from './components/ContactIconButtons';
 import { HomePage } from './pages/HomePage';
 import { AngebotePage } from './pages/AngebotePage';
-import { SortimentPage } from './pages/SortimentPage';
-import { ServicePage } from './pages/ServicePage';
-import { UeberUnsPage } from './pages/UeberUnsPage';
 import { KontaktPage } from './pages/KontaktPage';
 import { MarktfinderPage } from './pages/MarktfinderPage';
+import { MarktDetailPage } from './pages/MarktDetailPage';
+import { ServicePage } from './pages/ServicePage';
+import { SortimentPage } from './pages/SortimentPage';
+import { UeberUnsPage } from './pages/UeberUnsPage';
 export function App() {
   return (
-    <div className="min-h-screen flex flex-col font-sans bg-[#FFFBF5]">
-      {/* Global floating bubble background */}
-      <div className="bubble-bg" aria-hidden="true">
-        <div className="bubble" />
-        <div className="bubble" />
-        <div className="bubble" />
-        <div className="bubble" />
-        <div className="bubble" />
-        <div className="bubble" />
-        <div className="bubble" />
-        <div className="bubble" />
-        <div className="bubble" />
-        <div className="bubble" />
-        <div className="bubble" />
-        <div className="bubble" />
-        <div className="bubble" />
-        <div className="bubble" />
-        <div className="bubble" />
-      </div>
+    <BrowserRouter>
+      <div className="min-h-screen flex flex-col bg-gray-50">
+        <Navbar />
+        <main className="flex-grow">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/angebote" element={<AngebotePage />} />
+            <Route path="/kontakt" element={<KontaktPage />} />
+            <Route path="/marktfinder" element={<MarktfinderPage />} />
+            <Route
+              path="/marktfinder/:marketId"
+              element={<MarktDetailPage />} />
 
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/marktfinder" element={<MarktfinderPage />} />
-        <Route path="/angebote" element={<AngebotePage />} />
-        <Route path="/sortiment" element={<SortimentPage />} />
-        <Route path="/service" element={<ServicePage />} />
-        <Route path="/ueber-uns" element={<UeberUnsPage />} />
-        <Route path="/kontakt" element={<KontaktPage />} />
-      </Routes>
-      <Footer />
-    </div>);
+            <Route path="/service" element={<ServicePage />} />
+            <Route path="/sortiment" element={<SortimentPage />} />
+            <Route path="/ueber-uns" element={<UeberUnsPage />} />
+          </Routes>
+        </main>
+        <Footer />
+        <FloatingContactBar />
+      </div>
+    </BrowserRouter>);
 
 }
