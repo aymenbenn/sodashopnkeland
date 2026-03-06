@@ -63,11 +63,13 @@ export function HomePage() {
               className="relative"
             >
               <div className="absolute inset-0 bg-white rounded-2xl transform rotate-3 scale-105 opacity-20"></div>
-              <img
-                src="https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+               <img
+                src="/hero.png"
                 alt="GetränkeLAND Filiale"
                 className="rounded-2xl shadow-2xl relative z-10 w-full object-cover h-[400px]"
               />
+
+
             </motion.div>
           </div>
         </div>
@@ -133,8 +135,8 @@ export function HomePage() {
               </div>
             </div>
             <div className="relative h-64 lg:h-auto bg-orange-50">
-              <img
-                src="https://images.unsplash.com/photo-1566385101042-1a0aa0c1268c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+           <img
+                src="/promo.png"
                 alt="Corona Extra Aktion"
                 className="absolute inset-0 w-full h-full object-cover"
               />
@@ -157,8 +159,8 @@ export function HomePage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             <Link to="/sortiment" className="group">
               <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform group-hover:-translate-y-2 border border-orange-100 hover:border-orange-500">
-                <div className="h-48 overflow-hidden bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center">
-                  <span className="text-6xl">🍺</span>
+                <div className="h-48 overflow-hidden flex items-center justify-center">
+                  <img src="/bier.png" alt="Bier" className="w-full h-full object-cover" />
                 </div>
                 <div className="p-4 text-center">
                   <h3 className="text-xl font-bold text-[#FF7F50] group-hover:text-orange-600 transition-colors">
@@ -169,8 +171,8 @@ export function HomePage() {
             </Link>
             <Link to="/sortiment" className="group">
               <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform group-hover:-translate-y-2 border border-orange-100 hover:border-orange-500">
-                <div className="h-48 overflow-hidden bg-gradient-to-br from-red-400 to-pink-400 flex items-center justify-center">
-                  <span className="text-6xl">🍷</span>
+                <div className="h-48 overflow-hidden flex items-center justify-center">
+                  <img src="/wein.jpg" alt="Wein & Sekt" className="w-full h-full object-cover" />
                 </div>
                 <div className="p-4 text-center">
                   <h3 className="text-xl font-bold text-[#FF7F50] group-hover:text-orange-600 transition-colors">
@@ -181,8 +183,8 @@ export function HomePage() {
             </Link>
             <Link to="/sortiment" className="group">
               <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform group-hover:-translate-y-2 border border-orange-100 hover:border-orange-500">
-                <div className="h-48 overflow-hidden bg-gradient-to-br from-blue-300 to-blue-500 flex items-center justify-center">
-                  <span className="text-6xl">💧</span>
+                 <div className="h-48 overflow-hidden flex items-center justify-center">
+                  <img src="/wasser.jpg" alt="Wasser" className="w-full h-full object-cover" />
                 </div>
                 <div className="p-4 text-center">
                   <h3 className="text-xl font-bold text-[#FF7F50] group-hover:text-orange-600 transition-colors">
@@ -193,8 +195,8 @@ export function HomePage() {
             </Link>
             <Link to="/sortiment" className="group">
               <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform group-hover:-translate-y-2 border border-orange-100 hover:border-orange-500">
-                <div className="h-48 overflow-hidden bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center">
-                  <span className="text-6xl">🥤</span>
+                <div className="h-48 overflow-hidden flex items-center justify-center">
+                  <img src="/limonaden.jpg" alt="Limonaden" className="w-full h-full object-cover" />
                 </div>
                 <div className="p-4 text-center">
                   <h3 className="text-xl font-bold text-[#FF7F50] group-hover:text-orange-600 transition-colors">
@@ -221,8 +223,8 @@ export function HomePage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="order-2 lg:order-1 relative">
             <div className="absolute -inset-4 bg-orange-200 rounded-3xl transform -rotate-3 z-0"></div>
-            <img
-              src="https://images.unsplash.com/photo-1578916171728-46686eac8d58?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              <img
+              src="/interior.png"
               alt="GetränkeLAND Innenansicht"
               className="rounded-2xl shadow-xl relative z-10 w-full object-cover h-[500px]"
             />
