@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { InfoIcon, FileTextIcon, BookOpenIcon, BuildingIcon } from 'lucide-react';
+import { FileTextIcon, BookOpenIcon, BuildingIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { productCategories } from '../data/productCategories';
 import { AnimatedBubbles } from '../components/AnimatedBubbles';
@@ -11,8 +11,8 @@ export const SortimentPage: React.FC = () => {
   return (
     <div className="w-full pb-20 relative">
       {/* Header with bubbles */}
-      <div className="relative bg-gradient-to-br from-[#FF7F50] via-orange-700 to-orange-600 py-16 text-white text-center overflow-hidden">
-        <AnimatedBubbles className="z-0" />
+      <div className="relative bg-gradient-to-br from-orange-600 via-orange-500 to-amber-500 py-16 text-white text-center overflow-hidden">
+        <AnimatedBubbles />
         <motion.div
           className="relative z-10"
           initial={{ opacity: 0, y: -20 }}
@@ -27,46 +27,48 @@ export const SortimentPage: React.FC = () => {
       </div>
 
       {/* Tabs */}
-<div className="bg-white border-b border-gray-200 shadow-sm sticky top-20 z-40">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="flex justify-center md:justify-start">
-      {[
-        { key: 'info', label: 'Informationen', icon: FileTextIcon },
-        { key: 'blog', label: 'Blog & Rezepte', icon: BookOpenIcon, link: '/blog' },
-        { key: 'brands', label: 'Unsere Marken', icon: BuildingIcon },
-      ].map((tab) => {
-        const baseClasses =
-          'flex-1 text-center py-4 border-b-2 font-bold flex items-center justify-center transition-colors';
+      <div className="bg-white border-b border-gray-200 shadow-sm sticky top-20 z-40">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-center md:justify-start">
+            {[
+              { key: 'info', label: 'Informationen', icon: FileTextIcon },
+              { key: 'blog', label: 'Blog & Rezepte', icon: BookOpenIcon, link: '/blog' },
+              { key: 'brands', label: 'Unsere Marken', icon: BuildingIcon },
+            ].map((tab) => {
+              const baseClasses =
+                'flex-1 text-center py-4 border-b-2 font-bold flex items-center justify-center transition-colors';
 
-        const activeClasses = activeTab === tab.key ? 'border-[#2d5a27] text-[#2d5a27]' : 'border-transparent text-gray-500 hover:text-orange-700';
+              const activeClasses =
+                activeTab === tab.key
+                  ? 'border-[#2d5a27] text-[#2d5a27]'
+                  : 'border-transparent text-gray-500 hover:text-orange-700';
 
-        if (tab.link) {
-          return (
-            <Link key={tab.key} to={tab.link} className={`${baseClasses} ${activeClasses}`}>
-              <tab.icon className="w-4 h-4 mr-2" />
-              {tab.label}
-            </Link>
-          );
-        } else {
-          return (
-            <button
-              key={tab.key}
-              onClick={() => setActiveTab(tab.key as 'info' | 'brands')}
-              className={`${baseClasses} ${activeClasses}`}
-            >
-              <tab.icon className="w-4 h-4 mr-2" />
-              {tab.label}
-            </button>
-          );
-        }
-      })}
-    </div>
-  </div>
-</div>
+              if (tab.link) {
+                return (
+                  <Link key={tab.key} to={tab.link} className={`${baseClasses} ${activeClasses}`}>
+                    <tab.icon className="w-4 h-4 mr-2" />
+                    {tab.label}
+                  </Link>
+                );
+              } else {
+                return (
+                  <button
+                    key={tab.key}
+                    onClick={() => setActiveTab(tab.key as 'info' | 'brands')}
+                    className={`${baseClasses} ${activeClasses}`}
+                  >
+                    <tab.icon className="w-4 h-4 mr-2" />
+                    {tab.label}
+                  </button>
+                );
+              }
+            })}
+          </div>
+        </div>
+      </div>
 
       {/* Tab Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
-        {/* Information Tab */}
         {activeTab === 'info' && (
           <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {productCategories.map((cat) => (
@@ -104,7 +106,6 @@ export const SortimentPage: React.FC = () => {
           </motion.div>
         )}
 
-        {/* Brands Tab */}
         {activeTab === 'brands' && (
           <motion.div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white p-6 rounded-xl shadow text-center">
