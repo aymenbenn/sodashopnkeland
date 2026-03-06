@@ -16,8 +16,9 @@ import { BlogPage } from './pages/BlogPage';
 export function App() {
   return (
     <BrowserRouter>
+ <Navbar />
       <div className="min-h-screen flex flex-col bg-gray-50">
-        <Navbar />
+       
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<HomePage />} />
