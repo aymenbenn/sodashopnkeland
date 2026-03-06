@@ -94,35 +94,36 @@ export const SortimentPage: React.FC = () => {
                     ))}
                   </ul>
                   <button
-                    onClick={() => navigate('/sortiment')}
+                    onClick={() => navigate('/blog')} // Redirect to blog page
                     className="mt-auto bg-orange-600 text-white px-4 py-2 rounded hover:bg-orange-700 transition-colors"
                   >
-                    Mehr erfahren
+                    Produkt ansehen  {/* Button text updated */}
                   </button>
                 </div>
               </motion.div>
             ))}
           </motion.div>
         )}
-{activeTab === 'brands' && (
-  <motion.div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-    {brands.map((brand, index) => (
-      <div
-        key={index}
-        className="bg-white p-6 rounded-xl shadow text-center flex flex-col items-center"
-      >
-        <img
-          src={brand.img}
-          alt={brand.name}
-          className="h-32 w-auto max-w-full mx-auto mb-4 object-contain"
-        />
-        <h3 className="font-bold text-xl mb-2">{brand.name}</h3>
-        <p className="text-gray-600">{brand.desc}</p>
-      </div>
-    ))}
-  </motion.div>
-)}
-      
+
+        {/* Brands Tab */}
+        {activeTab === 'brands' && (
+          <motion.div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+            {brands.map((brand, index) => (
+              <div
+                key={index}
+                className="bg-white p-6 rounded-xl shadow text-center flex flex-col items-center"
+              >
+                <img
+                  src={brand.img}
+                  alt={brand.name}
+                  className="h-32 w-auto max-w-full mx-auto mb-4 object-contain"
+                />
+                <h3 className="font-bold text-xl mb-2">{brand.name}</h3>
+                <p className="text-gray-600">{brand.desc}</p>
+              </div>
+            ))}
+          </motion.div>
+        )}
       </div>
     </div>
   );
