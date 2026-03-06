@@ -4,10 +4,26 @@ import { FloatingContactBar } from '../components/ContactIconButtons';
 import { productCategories } from '../data/productCategories';
 
 const topCards = [
-  { title: 'Erfrischendes Zitronenwasser', description: 'Perfekt für heiße Sommertage – einfach, gesund und lecker.' },
-  { title: 'Hausgemachte Limonade', description: 'Mit frischen Früchten, ohne Zuckerzusatz – ein Genuss für Groß & Klein.' },
-  { title: 'Fruchtige Smoothies', description: 'Vitaminreich & erfrischend – ideal für einen Energieschub.' },
-  { title: 'Gin-Cocktail Ideen', description: 'Exklusive Rezepte für besondere Anlässe und entspannte Abende.' },
+  {
+    title: 'Erfrischendes Zitronenwasser',
+    description: 'Perfekt für heiße Sommertage – einfach, gesund und lecker.',
+    img: '/zitronenwasser.png', // image in public folder
+  },
+  {
+    title: 'Hausgemachte Limonade',
+    description: 'Mit frischen Früchten, ohne Zuckerzusatz – ein Genuss für Groß & Klein.',
+    img: '/hausgemachte_limonade.png',
+  },
+  {
+    title: 'Fruchtige Smoothies',
+    description: 'Vitaminreich & erfrischend – ideal für einen Energieschub.',
+    img: '/fruchtige_smoothies.png',
+  },
+  {
+    title: 'Gin-Cocktail Ideen',
+    description: 'Exklusive Rezepte für besondere Anlässe und entspannte Abende.',
+    img: '/gin_cocktail.png',
+  },
 ];
 
 export const BlogPage: React.FC = () => {
@@ -15,7 +31,6 @@ export const BlogPage: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
-
       {/* Top Recipes Section */}
       <section className="max-w-7xl mx-auto px-4 py-16">
         <h2 className="text-4xl font-bold mb-8 text-gray-800 text-center">Unsere Top-Rezepte</h2>
@@ -26,8 +41,13 @@ export const BlogPage: React.FC = () => {
               onClick={() => setModalContent(card)}
               className="cursor-pointer min-w-[250px] flex-shrink-0 bg-white rounded-2xl shadow-lg hover:scale-105 transform transition-all duration-300"
             >
-              <div className="h-40 w-full relative bg-orange-200 flex items-center justify-center rounded-t-2xl">
-                <span className="text-white font-bold text-lg">{card.title}</span>
+              {/* Image */}
+              <div className="h-40 w-full relative rounded-t-2xl overflow-hidden">
+                <img
+                  src={card.img}
+                  alt={card.title}
+                  className="object-cover w-full h-full transition-transform duration-500 hover:scale-105"
+                />
               </div>
               <div className="p-4">
                 <h3 className="text-lg font-bold text-gray-900 mb-2">{card.title}</h3>
@@ -49,8 +69,10 @@ export const BlogPage: React.FC = () => {
               index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
             } bg-white rounded-3xl shadow-lg overflow-hidden`}
           >
-            <div className="md:w-1/2 h-64 md:h-auto relative flex-shrink-0 cursor-pointer"
-                 onClick={() => setModalContent({ title: cat.title, description: cat.blogText })}>
+            <div
+              className="md:w-1/2 h-64 md:h-auto relative flex-shrink-0 cursor-pointer"
+              onClick={() => setModalContent({ title: cat.title, description: cat.blogText })}
+            >
               <img
                 src={cat.img}
                 alt={cat.title}
