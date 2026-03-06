@@ -8,9 +8,18 @@ import { AnimatedBubbles } from '../components/AnimatedBubbles';
 export const SortimentPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'info' | 'brands'>('info');
 
+  // Marques/Boissons avec images locales
+  const brands = [
+    { name: 'Radler', img: '/images/radler.png', desc: 'Erfrischendes Bier-Mixgetränk mit Zitrone.' },
+    { name: 'Weinschorle', img: '/images/weinschorle.png', desc: 'Leichte Mischung aus Wein und Sprudelwasser.' },
+    { name: 'Apfelschorle', img: '/images/apfelschorle.png', desc: 'Spritziger Apfelsaft-Mix – natürlich erfrischend.' },
+    { name: 'Spezi', img: '/images/spezi.png', desc: 'Beliebtes Mischgetränk aus Cola und Orangenlimonade.' },
+    { name: 'Cola-Weizen', img: '/images/cola-weizen.png', desc: 'Kombination aus Cola und Weizenbier für Abwechslung.' },
+  ];
+
   return (
     <div className="w-full pb-20 relative">
-      {/* Header with bubbles */}
+      {/* Header */}
       <div className="relative bg-gradient-to-br from-orange-600 via-orange-500 to-amber-500 py-16 text-white text-center overflow-hidden">
         <AnimatedBubbles />
         <motion.div
@@ -37,7 +46,6 @@ export const SortimentPage: React.FC = () => {
             ].map((tab) => {
               const baseClasses =
                 'flex-1 text-center py-4 border-b-2 font-bold flex items-center justify-center transition-colors';
-
               const activeClasses =
                 activeTab === tab.key
                   ? 'border-[#2d5a27] text-[#2d5a27]'
@@ -69,6 +77,7 @@ export const SortimentPage: React.FC = () => {
 
       {/* Tab Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
+        {/* Informations Tab */}
         {activeTab === 'info' && (
           <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {productCategories.map((cat) => (
@@ -106,31 +115,16 @@ export const SortimentPage: React.FC = () => {
           </motion.div>
         )}
 
+        {/* Brands Tab with your 5 drinks */}
         {activeTab === 'brands' && (
-          <motion.div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded-xl shadow text-center">
-              <img src="/aqualina.png" className="h-20 mx-auto mb-4" />
-              <h3 className="font-bold text-xl mb-2">Aqualina</h3>
-              <p className="text-gray-600">
-                Frisches Gebirgswasser in bester Qualität – erhältlich in still, medium und spritzig.
-              </p>
-            </div>
-
-            <div className="bg-white p-6 rounded-xl shadow text-center">
-              <img src="/adelsdorfer.png" className="h-20 mx-auto mb-4" />
-              <h3 className="font-bold text-xl mb-2">Adelsdorfer</h3>
-              <p className="text-gray-600">
-                Traditionell gebrautes Bier von höchster Qualität – vollmundig, ausgewogen und erfrischend.
-              </p>
-            </div>
-
-            <div className="bg-white p-6 rounded-xl shadow text-center">
-              <img src="/fruchtgarten.png" className="h-20 mx-auto mb-4" />
-              <h3 className="font-bold text-xl mb-2">Fruchtgarten</h3>
-              <p className="text-gray-600">
-                Erlesene Säfte voller natürlicher Frische und intensivem Geschmack zu einem attraktiven Preis.
-              </p>
-            </div>
+          <motion.div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+            {brands.map((brand, index) => (
+              <div key={index} className="bg-white p-6 rounded-xl shadow text-center flex flex-col items-center">
+                <img src={brand.img} alt={brand.name} className="h-20 w-auto mx-auto mb-4" />
+                <h3 className="font-bold text-xl mb-2">{brand.name}</h3>
+                <p className="text-gray-600">{brand.desc}</p>
+              </div>
+            ))}
           </motion.div>
         )}
       </div>
