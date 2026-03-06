@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FileTextIcon, BookOpenIcon, BuildingIcon } from 'lucide-react';
-import { useNavigate, Link } from 'react-router-dom';
+import { FileTextIcon, BuildingIcon } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { productCategories } from '../data/productCategories';
 import { AnimatedBubbles } from '../components/AnimatedBubbles';
 
 export const SortimentPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'info' | 'brands'>('info');
-  const navigate = useNavigate(); // ✅ useNavigate for reliable routing
+  const navigate = useNavigate();
 
   const brands = [
     { name: 'Radler', img: '/radler.png', desc: 'Erfrischendes Bier-Mixgetränk mit Zitrone.' },
@@ -30,7 +30,7 @@ export const SortimentPage: React.FC = () => {
         >
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Unser Sortiment</h1>
           <p className="text-xl text-orange-50 max-w-2xl mx-auto px-4">
-            Frische und Vielfalt für Ihren Alltag. Entdecken Sie unsere Produkte, Rezepte und Partnermarken.
+            Frische und Vielfalt für Ihren Alltag. Entdecken Sie unsere Produkte und Partnermarken.
           </p>
         </motion.div>
       </div>
@@ -41,7 +41,6 @@ export const SortimentPage: React.FC = () => {
           <div className="flex justify-center md:justify-start">
             {[
               { key: 'info', label: 'Informationen', icon: FileTextIcon },
-              { key: 'blog', label: 'Blog & Rezepte', icon: BookOpenIcon, link: '/blog' },
               { key: 'brands', label: 'Unsere Marken', icon: BuildingIcon },
             ].map((tab) => {
               const baseClasses =
@@ -51,25 +50,16 @@ export const SortimentPage: React.FC = () => {
                   ? 'border-[#2d5a27] text-[#2d5a27]'
                   : 'border-transparent text-gray-500 hover:text-orange-700';
 
-              if (tab.link) {
-                return (
-                  <Link key={tab.key} to={tab.link} className={`${baseClasses} ${activeClasses}`}>
-                    <tab.icon className="w-4 h-4 mr-2" />
-                    {tab.label}
-                  </Link>
-                );
-              } else {
-                return (
-                  <button
-                    key={tab.key}
-                    onClick={() => setActiveTab(tab.key as 'info' | 'brands')}
-                    className={`${baseClasses} ${activeClasses}`}
-                  >
-                    <tab.icon className="w-4 h-4 mr-2" />
-                    {tab.label}
-                  </button>
-                );
-              }
+              return (
+                <button
+                  key={tab.key}
+                  onClick={() => setActiveTab(tab.key as 'info' | 'brands')}
+                  className={`${baseClasses} ${activeClasses}`}
+                >
+                  <tab.icon className="w-4 h-4 mr-2" />
+                  {tab.label}
+                </button>
+              );
             })}
           </div>
         </div>
@@ -86,7 +76,6 @@ export const SortimentPage: React.FC = () => {
                 whileHover={{ scale: 1.03 }}
                 className="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden flex flex-col"
               >
-                {/* Image */}
                 <div className="h-48 relative overflow-hidden flex items-center justify-center">
                   <img src={cat.img} alt={cat.title} className="absolute inset-0 w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
@@ -95,8 +84,6 @@ export const SortimentPage: React.FC = () => {
                     <span className="text-sm opacity-90 font-medium">{cat.subtitle}</span>
                   </div>
                 </div>
-
-                {/* Content */}
                 <div className="p-6 flex flex-col flex-grow">
                   <ul className="space-y-2 text-gray-700 mb-4 flex-grow">
                     {cat.items.map((item, i) => (
@@ -106,13 +93,11 @@ export const SortimentPage: React.FC = () => {
                       </li>
                     ))}
                   </ul>
-
-                  {/* ✅ Aligned Button at bottom */}
                   <button
-                    onClick={() => navigate('/blog')}
+                    onClick={() => navigate('/sortiment')}
                     className="mt-auto bg-orange-600 text-white px-4 py-2 rounded hover:bg-orange-700 transition-colors"
                   >
-                    Produkt ansehen
+                    Mehr erfahren
                   </button>
                 </div>
               </motion.div>
