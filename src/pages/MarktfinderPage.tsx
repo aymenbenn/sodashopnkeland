@@ -212,22 +212,23 @@ export function MarktfinderPage() {
 
                 <div className="flex gap-2">
 
-                  <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Lotto_logo.svg/512px-Lotto_logo.svg.png"
-                  alt="Lotto"
-                  className="h-6 w-auto" />
+           <img
+  src="/lotto.jpg"
+  alt="Lotto"
+  className="h-6 w-auto"
+/>
 
+<img
+  src="/post.jpg"
+  alt="Post"
+  className="h-6 w-auto"
+/>
 
-                  <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Deutsche_Post_logo.svg/512px-Deutsche_Post_logo.svg.png"
-                  alt="Post"
-                  className="h-6 w-auto" />
-
-
-                  <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/DHL_Logo.svg/512px-DHL_Logo.svg.png"
-                  alt="DHL"
-                  className="h-6 w-auto" />
+<img
+  src="/dhl.jpg"
+  alt="DHL"
+  className="h-6 w-auto"
+/>
 
 
                 </div>
