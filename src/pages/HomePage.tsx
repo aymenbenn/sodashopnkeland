@@ -31,7 +31,7 @@ export function HomePage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
                 <Link
-                  to="/marktfinder"
+                  to="/recipes"
                   className="inline-flex items-center justify-center px-8 py-4 bg-white text-[#FF7F50] font-bold text-lg rounded-full hover:bg-gray-50 shadow-xl transition-all duration-300 transform hover:-translate-y-1"
                 >
                   <MapPinIcon className="w-6 h-6 mr-2" />
