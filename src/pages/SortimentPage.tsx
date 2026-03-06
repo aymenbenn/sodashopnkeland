@@ -27,41 +27,42 @@ export const SortimentPage: React.FC = () => {
       </div>
 
       {/* Tabs */}
-  <div className="bg-white border-b border-gray-200 shadow-sm sticky top-20 z-40">
+<div className="bg-white border-b border-gray-200 shadow-sm sticky top-20 z-40">
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div className="flex justify-center md:justify-start">
-            {[
-              { key: 'info', label: 'Informationen', icon: FileTextIcon },
-              { key: 'blog', label: 'Blog & Rezepte', icon: BookOpenIcon, link: '/blog' },
-              { key: 'brands', label: 'Unsere Marken', icon: BuildingIcon },
-            ].map((tab) =>
-              tab.link ? (
-                <Link
-                  key={tab.key}
-                  to={tab.link}
-                  className="py-4 px-3 md:px-4 border-b-2 font-bold flex items-center whitespace-nowrap text-gray-500 hover:text-orange-700 transition-colors"
-                >
-                  <tab.icon className="w-4 h-4 mr-2" />
-                  {tab.label}
-                </Link>
-              ) : (
-                <button
-                  key={tab.key}
-                  onClick={() => setActiveTab(tab.key as 'info' | 'brands')}
-                  className={`py-4 px-3 md:px-4 border-b-2 font-bold flex items-center whitespace-nowrap transition-colors ${
-                    activeTab === tab.key
-                      ? 'border-[#2d5a27] text-[#2d5a27]'
-                      : 'border-transparent text-gray-500 hover:text-orange-700'
-                  }`}
-                >
-                  <tab.icon className="w-4 h-4 mr-2" />
-                  {tab.label}
-                </button>
-              )
-            )}
-          </div>
-        </div>
-      </div>
+      {[
+        { key: 'info', label: 'Informationen', icon: FileTextIcon },
+        { key: 'blog', label: 'Blog & Rezepte', icon: BookOpenIcon, link: '/blog' },
+        { key: 'brands', label: 'Unsere Marken', icon: BuildingIcon },
+      ].map((tab) => {
+        const baseClasses =
+          'flex-1 text-center py-4 border-b-2 font-bold flex items-center justify-center transition-colors';
+
+        const activeClasses = activeTab === tab.key ? 'border-[#2d5a27] text-[#2d5a27]' : 'border-transparent text-gray-500 hover:text-orange-700';
+
+        if (tab.link) {
+          return (
+            <Link key={tab.key} to={tab.link} className={`${baseClasses} ${activeClasses}`}>
+              <tab.icon className="w-4 h-4 mr-2" />
+              {tab.label}
+            </Link>
+          );
+        } else {
+          return (
+            <button
+              key={tab.key}
+              onClick={() => setActiveTab(tab.key as 'info' | 'brands')}
+              className={`${baseClasses} ${activeClasses}`}
+            >
+              <tab.icon className="w-4 h-4 mr-2" />
+              {tab.label}
+            </button>
+          );
+        }
+      })}
+    </div>
+  </div>
+</div>
 
       {/* Tab Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
