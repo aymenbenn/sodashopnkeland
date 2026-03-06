@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { InfoIcon, FileTextIcon, BookOpenIcon, BuildingIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { productCategories } from '../data/productCategories';
-
+import { AnimatedBubbles } from '../components/AnimatedBubbles';
 
 
 export const SortimentPage: React.FC = () => {
@@ -28,7 +28,7 @@ export const SortimentPage: React.FC = () => {
             <button
               onClick={() => setActiveTab('info')}
               className={`py-4 px-2 border-b-2 font-bold flex items-center whitespace-nowrap transition-colors ${
-                activeTab === 'info' ? 'border-[#2d5a27] text-[#2d5a27]' : 'border-transparent text-gray-500 hover:text-green-700'
+                activeTab === 'info' ? 'border-[#2d5a27] text-[#2d5a27]' : 'border-transparent text-gray-500 hover:text-orange-700'
               }`}
             >
               <FileTextIcon className="w-4 h-4 mr-2" />
@@ -37,7 +37,7 @@ export const SortimentPage: React.FC = () => {
 
             <Link
               to="/blog"
-              className="py-4 px-2 border-b-2 font-bold flex items-center whitespace-nowrap text-gray-500 hover:text-green-700 transition-colors"
+              className="py-4 px-2 border-b-2 font-bold flex items-center whitespace-nowrap text-gray-500 hover:text-orange-700 transition-colors"
             >
               <BookOpenIcon className="w-4 h-4 mr-2" />
               Blog & Rezepte
