@@ -130,7 +130,7 @@ export function UeberUnsPage() {
               className="w-full h-64 object-cover rounded-2xl shadow-md" />
 
             <img
-              src="/image.jpg"
+              src="/image-3.JPG"
               alt="GetränkeLAND Markt innen"
               className="w-full h-64 object-cover rounded-2xl shadow-md" />
 
