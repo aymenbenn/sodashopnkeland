@@ -61,9 +61,7 @@ export const rawStores = [
 "GetränkeLAND Müller, Waldstraße 5, 04928 Plessa, 03533 5349"];
 
 
-/* ---------------- PARSE DATA ---------------- */
-
-const extractFilterCity = (zipCity: string) => {
+const extractFilterCity = (zipCity) => {
   const parts = zipCity.split(" ");
   if (parts.length > 1) {
     return parts.slice(1).join(" ").split("/")[0];
@@ -73,7 +71,6 @@ const extractFilterCity = (zipCity: string) => {
 
 export const stores = rawStores.map((storeStr, index) => {
   const parts = storeStr.split(",").map((s) => s.trim());
-
   return {
     id: index.toString(),
     name: parts[0],
@@ -85,23 +82,19 @@ export const stores = rawStores.map((storeStr, index) => {
 });
 
 /* ---------------- PAGE ---------------- */
-
 export function MarktfinderPage() {
-
   const [selectedCity, setSelectedCity] = useState("Alle");
 
   const filterCities = [
-  "Alle",
-  ...Array.from(new Set(stores.map((s) => s.filterCity)))];
-
+    "Alle",
+    ...Array.from(new Set(stores.map((s) => s.filterCity)))
+  ];
 
   const filteredStores = useMemo(() => {
     if (selectedCity === "Alle") return stores;
-
     return stores.filter(
       (store) =>
-      store.filterCity === selectedCity ||
-      store.zipCity.includes(selectedCity)
+        store.filterCity === selectedCity || store.zipCity.includes(selectedCity)
     );
   }, [selectedCity]);
 
@@ -109,15 +102,10 @@ export function MarktfinderPage() {
     <div className="w-full pb-20">
 
       {/* HEADER */}
-
       <div className="relative bg-gradient-to-br from-orange-600 via-orange-500 to-amber-500 py-16 text-white text-center overflow-hidden">
         <AnimatedBubbles />
-
         <div className="relative z-10">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            Marktfinder
-          </h1>
-
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Marktfinder</h1>
           <p className="text-xl text-orange-50 max-w-2xl mx-auto px-4">
             Finden Sie schnell und einfach einen GetränkeLAND Markt in Ihrer Nähe.
           </p>
@@ -125,64 +113,53 @@ export function MarktfinderPage() {
       </div>
 
       {/* CONTENT */}
-
       <div className="max-w-7xl mx-auto px-4 mt-8">
 
         {/* FILTER */}
-
         <div className="bg-white p-4 rounded-xl shadow-sm border mb-8">
           <div className="flex flex-wrap gap-2">
-
-            {filterCities.map((city) =>
-            <button
-              key={city}
-              onClick={() => setSelectedCity(city)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-              selectedCity === city ?
-              "bg-orange-600 text-white" :
-              "bg-gray-100 hover:bg-orange-100"}`
-              }>
-
+            {filterCities.map((city) => (
+              <button
+                key={city}
+                onClick={() => setSelectedCity(city)}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                  selectedCity === city
+                    ? "bg-orange-600 text-white"
+                    : "bg-gray-100 hover:bg-orange-100"
+                }`}
+              >
                 {city}
               </button>
-            )}
-
+            ))}
           </div>
         </div>
 
         {/* RESULT COUNT */}
-
         <h2 className="text-2xl font-bold text-[#1E3A5F] mb-6">
           {filteredStores.length} Filialen gefunden
         </h2>
 
         {/* GRID */}
-
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredStores.map((store) => (
+            <Link
+              to={`/marktfinder/${store.id}`}
+              key={store.id}
+              className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl border flex flex-col"
+            >
 
-          {filteredStores.map((store) =>
+              {/* NAME + GEÖFFNET BADGE */}
+              <div className="flex justify-between mb-4 items-center">
+                <h3 className="font-bold text-lg text-[#1E3A5F]">{store.name}</h3>
+                <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded w-20 inline-block text-center">
+                  Geöffnet
+                </span>
+              </div>
 
-          <Link
-            to={`/marktfinder/${store.id}`}
-            key={store.id}
-            className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl border flex flex-col">
-
-
-            <div className="flex justify-between mb-4">
-  <h3 className="font-bold text-lg text-[#1E3A5F]">
-    {store.name}
-  </h3>
-
-  <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded min-w-[60px] inline-block text-center">
-    Geöffnet
-  </span>
-</div>
-
+              {/* STORE INFO */}
               <div className="space-y-3 text-gray-600 mb-6">
-
                 <div className="flex items-start">
                   <MapPinIcon className="w-5 h-5 mr-3 text-orange-600" />
-
                   <div>
                     <p>{store.address}</p>
                     <p>{store.zipCity}</p>
@@ -196,51 +173,28 @@ export function MarktfinderPage() {
 
                 <div className="flex items-start">
                   <ClockIcon className="w-5 h-5 mr-3 text-orange-600" />
-
                   <p className="text-sm">
                     Mo-Fr: 9:00-19:00
                     <br />
                     Sa: 9:00-14:00
                   </p>
                 </div>
-
               </div>
 
+              {/* LOGOS + NAV */}
               <div className="flex justify-between items-center pt-4 border-t">
-
                 <div className="flex gap-2">
-
-           <img
-  src="/lotto.JPG"
-  alt="Lotto"
-  className="h-6 w-auto"
-/>
-
-<img
-  src="/post.JPG"
-  alt="Post"
-  className="h-6 w-auto"
-/>
-
-<img
-  src="/dhl.JPG"
-  alt="DHL"
-  className="h-6 w-auto"
-/>
-
-
+                  <img src="/lotto.JPG" alt="Lotto" className="h-6 w-auto" />
+                  <img src="/post.JPG" alt="Post" className="h-6 w-auto" />
+                  <img src="/dhl.JPG" alt="DHL" className="h-6 w-auto" />
                 </div>
-
                 <NavigationIcon className="w-5 h-5 text-orange-600" />
-
               </div>
 
             </Link>
-
-          )}
-
+          ))}
         </div>
       </div>
-    </div>);
-
+    </div>
+  );
 }
