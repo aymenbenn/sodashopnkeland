@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { AnimatedBubbles } from '../components/AnimatedBubbles';
-import { InfoIcon, FileTextIcon, BookOpenIcon, BuildingIcon, ArrowRightIcon, Clock, ShoppingCart } from 'lucide-react';
+import { InfoIcon, FileTextIcon, BookOpenIcon, BuildingIcon, Clock, ShoppingCart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export function SortimentPage() {
   const [activeTab, setActiveTab] = useState<'info' | 'blog' | 'brands'>('info');
 
+  // Top Deal / Prospekt info
   const topDeal = {
     name: 'Regionales Gemüse',
     desc: 'Beim Kauf ab 15€ erhalten Sie eine Baumwolltasche GRATIS',
@@ -15,6 +16,7 @@ export function SortimentPage() {
     color: 'from-green-500 to-green-600',
   };
 
+  // Product categories
   const productCategories = [
     {
       title: 'Wasser',
@@ -168,6 +170,28 @@ export function SortimentPage() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Final Info Section */}
+        <div className="bg-[#2d5a27] rounded-3xl p-8 md:p-12 text-white text-center relative overflow-hidden mt-12">
+          <div className="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-green-500 rounded-full opacity-20 blur-2xl"></div>
+          <div className="absolute bottom-0 left-0 -mb-10 -ml-10 w-40 h-40 bg-green-500 rounded-full opacity-20 blur-2xl"></div>
+          <div className="relative z-10 max-w-3xl mx-auto">
+            <InfoIcon className="w-12 h-12 text-green-300 mx-auto mb-6" />
+            <h3 className="text-2xl md:text-3xl font-bold mb-4">Nicht das Richtige gefunden?</h3>
+            <p className="text-lg text-green-50 mb-8">
+              Unser Sortiment variiert je nach Standort und Saison. Sprechen Sie unsere Mitarbeiter vor Ort an – wir bestellen gerne spezielle Wünsche für Sie!
+            </p>
+            <p className="text-sm text-green-200 italic mb-4">
+              * Hinweis: Die Verfügbarkeit einzelner Produkte kann je nach Filiale variieren.
+            </p>
+            <Link
+              to="/marktfinder"
+              className="inline-block bg-green-600 text-white px-6 py-3 rounded hover:bg-green-700 transition-colors"
+            >
+              Zum Marktfinder
+            </Link>
+          </div>
         </div>
       </div>
     </div>
