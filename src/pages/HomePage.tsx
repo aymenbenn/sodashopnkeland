@@ -160,7 +160,7 @@ export function HomePage() {
             <Link to="/sortiment" className="group">
               <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform group-hover:-translate-y-2 border border-orange-100 hover:border-orange-500">
                 <div className="h-48 overflow-hidden flex items-center justify-center">
-                  <img src="/bier.png" alt="Bier" className="w-full h-full object-cover" />
+                  <img src="/beer.png" alt="Bier" className="w-full h-full object-cover" />
                 </div>
                 <div className="p-4 text-center">
                   <h3 className="text-xl font-bold text-[#FF7F50] group-hover:text-orange-600 transition-colors">
@@ -184,7 +184,7 @@ export function HomePage() {
             <Link to="/sortiment" className="group">
               <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform group-hover:-translate-y-2 border border-orange-100 hover:border-orange-500">
                  <div className="h-48 overflow-hidden flex items-center justify-center">
-                  <img src="/wasser.jpg" alt="Wasser" className="w-full h-full object-cover" />
+                  <img src="/wasser.png" alt="Wasser" className="w-full h-full object-cover" />
                 </div>
                 <div className="p-4 text-center">
                   <h3 className="text-xl font-bold text-[#FF7F50] group-hover:text-orange-600 transition-colors">
