@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { AnimatedBubbles } from '../components/AnimatedBubbles';
-import { InfoIcon, FileTextIcon, BookOpenIcon, BuildingIcon, Clock, ShoppingCart, ArrowRight } from 'lucide-react';
+import { InfoIcon, Clock, ShoppingCart, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export function SortimentPage() {
-  const [activeTab, setActiveTab] = useState<'info' | 'blog' | 'brands'>('info');
-
   const topDeal = {
     name: 'Frische-Aktion: Regionales Gemüse',
     desc: 'Beim Kauf von regionalem Gemüse ab 15€ erhalten Sie eine praktische Baumwolltasche GRATIS dazu! Perfekt für Ihren nächsten Einkauf.',
@@ -14,43 +12,19 @@ export function SortimentPage() {
     badge: 'Top Deal der Woche',
   };
 
+  const productGrid = [
+    { name: 'Äpfel aus der Region', weight: '2kg Netz', price: '2.99 €', oldPrice: '3.99 €', discount: '-20%', emoji: '🍎' },
+    { name: 'Frische Vollmilch', weight: '1 Liter, 3.5% Fett', price: '1.19 €', oldPrice: '1.49 €', discount: '-15%', emoji: '🥛' },
+    { name: 'Bauernbrot', weight: '500g Laib', price: '2.22 €', oldPrice: '2.99 €', discount: '-25%', emoji: '🍞' },
+  ];
+
   const productCategories = [
-    {
-      title: 'Wasser',
-      subtitle: '5 Kategorien',
-      items: ['Mineralwasser', 'Heilwasser', 'Tafelwasser', 'Aromatisiertes Wasser', 'Babywasser'],
-      img: '/wasser.png',
-    },
-    {
-      title: 'Bier',
-      subtitle: '6 Kategorien',
-      items: ['Pils', 'Weizen', 'Helles', 'Schwarzbier', 'Alkoholfreies Bier', 'Craft Beer'],
-      img: '/beer.png',
-    },
-    {
-      title: 'Limonade & Cola',
-      subtitle: '5 Kategorien',
-      items: ['Cola & Cola-Mix', 'Orangenlimonade', 'Zitronenlimonade', 'Fassbrause', 'Energy Drinks'],
-      img: '/limonade.png',
-    },
-    {
-      title: 'Wein & Sekt',
-      subtitle: '5 Kategorien',
-      items: ['Rotwein', 'Weißwein', 'Rosé', 'Sekt & Prosecco', 'Glühwein'],
-      img: '/wein.jpg',
-    },
-    {
-      title: 'Fruchthaltige Getränke',
-      subtitle: '5 Kategorien',
-      items: ['Apfelsaft', 'Orangensaft', 'Multivitamin', 'Gemüsesäfte', 'Bio-Säfte'],
-      img: '/fruchtsaft.jpeg',
-    },
-    {
-      title: 'Spirituosen',
-      subtitle: '6 Kategorien',
-      items: ['Whisky', 'Gin', 'Wodka', 'Rum', 'Liköre', 'Kräuterschnaps'],
-      img: '/spirituosen.jpg',
-    },
+    { title: 'Obst & Gemüse', items: ['Äpfel', 'Bananen', 'Tomaten', 'Paprika'] },
+    { title: 'Backwaren', items: ['Brot', 'Brötchen', 'Kuchen'] },
+    { title: 'Molkerei', items: ['Milch', 'Joghurt', 'Käse'] },
+    { title: 'Fleisch', items: ['Huhn', 'Rind', 'Schwein'] },
+    { title: 'Getränke', items: ['Wasser', 'Bier', 'Limonade'] },
+    { title: 'Drogerie', items: ['Seife', 'Shampoo', 'Zahnpasta'] },
   ];
 
   return (
@@ -60,7 +34,7 @@ export function SortimentPage() {
         <img src="/banner.png" alt="Banner" className="w-full object-cover" />
       </section>
 
-      {/* Aktuelle Angebote Intro */}
+      {/* Aktuelle Angebote */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
         <h1 className="text-4xl md:text-5xl font-bold mb-4">Aktuelle Angebote</h1>
         <p className="text-xl text-gray-700 max-w-2xl mx-auto">
@@ -90,7 +64,7 @@ export function SortimentPage() {
         </div>
       </section>
 
-      {/* Top Deal der Woche */}
+      {/* Top Deal */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
         <div className="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100 p-6 md:p-12 flex flex-col md:flex-row items-center gap-8">
           <img src={topDeal.img} alt="Top Deal" className="rounded-2xl w-full md:w-1/2 object-cover shadow-md" />
@@ -108,31 +82,41 @@ export function SortimentPage() {
         </div>
       </section>
 
+      {/* Gemüse Angebot Grid */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+        {productGrid.map((prod, idx) => (
+          <div key={idx} className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 flex flex-col">
+            <div className="h-48 flex items-center justify-center bg-gray-50 relative">
+              <div className="absolute top-4 left-4 bg-red-500 text-white font-bold px-3 py-1 rounded-lg z-10">{prod.discount}</div>
+              <div className="text-6xl">{prod.emoji}</div>
+            </div>
+            <div className="p-6 flex flex-col flex-grow">
+              <h3 className="text-xl font-bold mb-1">{prod.name}</h3>
+              <p className="text-gray-500 text-sm mb-4">{prod.weight}</p>
+              <div className="flex items-end justify-between mt-auto">
+                <div>
+                  <span className="text-gray-400 line-through text-sm block">Statt {prod.oldPrice}</span>
+                  <span className="text-3xl font-bold text-green-600">{prod.price}</span>
+                </div>
+                <button className="bg-green-900 text-white p-2 rounded-lg hover:bg-green-600 transition-colors">
+                  <ArrowRight className="w-5 h-5" />
+                </button>
+              </div>
+            </div>
+          </div>
+        ))}
+      </section>
+
       {/* Product Categories */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {productCategories.map((cat, idx) => (
-          <div key={idx} className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 flex flex-col">
-            <div className="h-48 relative overflow-hidden flex items-center justify-center">
-              <img src={cat.img} alt={cat.title} className="absolute inset-0 w-full h-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
-              <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                <h3 className="text-2xl font-bold">{cat.title}</h3>
-                <span className="text-sm">{cat.subtitle}</span>
-              </div>
-            </div>
-            <div className="p-6 flex-grow">
-              <ul className="space-y-2 text-gray-700 mb-4">
-                {cat.items.map((item, i) => (
-                  <li key={i} className="flex items-center">
-                    <span className="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <Link className="mt-auto inline-block bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-center">
-                Produkt ansehen
-              </Link>
-            </div>
+          <div key={idx} className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 flex flex-col p-6">
+            <h3 className="text-xl font-bold mb-2">{cat.title}</h3>
+            <ul className="space-y-2 text-gray-700 mb-4">
+              {cat.items.map((item, i) => (
+                <li key={i}>- {item}</li>
+              ))}
+            </ul>
           </div>
         ))}
       </section>
