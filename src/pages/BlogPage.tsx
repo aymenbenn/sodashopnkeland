@@ -6,50 +6,47 @@ import { productCategories } from '../data/productCategories';
 export const BlogPage: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
-      <main className="flex-grow max-w-7xl mx-auto px-4 py-16">
-        <h1 className="text-4xl font-bold mb-12 text-center text-gray-800">
+      <main className="flex-grow max-w-7xl mx-auto px-4 py-16 space-y-24">
+        <h1 className="text-5xl font-extrabold mb-16 text-center text-gray-800">
           Blog & Rezepte
         </h1>
 
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
-          {productCategories.map((cat) => (
-            <div
-              key={cat.title}
-              className="bg-white rounded-3xl shadow-lg overflow-hidden flex flex-col hover:scale-105 transform transition-all duration-300"
-            >
-              {/* Image */}
-              <div className="h-48 w-full relative">
-                <img
-                  src={cat.img}
-                  alt={cat.title}
-                  className="object-cover w-full h-full"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
-                <div className="absolute bottom-4 left-4 text-white">
-                  <h2 className="text-2xl font-bold">{cat.title}</h2>
-                  <span className="text-sm opacity-90">{cat.subtitle}</span>
-                </div>
-              </div>
-
-              {/* Content */}
-              <div className="p-6 flex flex-col flex-grow">
-                <p className="text-gray-700 whitespace-pre-line flex-grow">
-                  {cat.blogText}
-                </p>
-
-                {/* Optional: highlight items */}
-                <ul className="mt-4 space-y-1 text-gray-600">
-                  {cat.items.map((item, i) => (
-                    <li key={i} className="flex items-center">
-                      <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+        {productCategories.map((cat, index) => (
+          <div
+            key={cat.title}
+            className={`flex flex-col md:flex-row items-center md:items-stretch ${
+              index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
+            } bg-white rounded-3xl shadow-lg overflow-hidden`}
+          >
+            {/* Image */}
+            <div className="md:w-1/2 h-64 md:h-auto relative flex-shrink-0">
+              <img
+                src={cat.img}
+                alt={cat.title}
+                className="object-cover w-full h-full transition-transform duration-500 hover:scale-105"
+              />
             </div>
-          ))}
-        </div>
+
+            {/* Text */}
+            <div className="md:w-1/2 p-8 flex flex-col justify-center bg-orange-100">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">{cat.title}</h2>
+              <span className="text-lg font-medium text-gray-700 mb-6">{cat.subtitle}</span>
+              <p className="text-gray-800 whitespace-pre-line mb-6">{cat.blogText}</p>
+
+              {/* Optional items list */}
+              <ul className="flex flex-wrap gap-2">
+                {cat.items.map((item, i) => (
+                  <li
+                    key={i}
+                    className="bg-orange-300 text-white px-3 py-1 rounded-full text-sm font-semibold"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
       </main>
 
       {/* Floating contact buttons */}
