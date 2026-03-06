@@ -1,165 +1,137 @@
-import React from 'react'
-import { InfoIcon, Clock } from 'lucide-react'
-import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import React from "react"
+import { InfoIcon, Clock } from "lucide-react"
+import { Link } from "react-router-dom"
+import { AnimatedBubbles } from "../components/AnimatedBubbles"
 
 export function AngebotePage() {
 
   const topDeal = {
-    name: 'Frische-Aktion: Regionales Gemüse',
-    desc: 'Beim Kauf von regionalem Gemüse ab 15€ erhalten Sie eine praktische Baumwolltasche GRATIS dazu! Perfekt für Ihren nächsten Einkauf.',
-    img: '/promo.png',
-    validity: 'Gültig bis Samstag',
-    badge: 'Top Deal der Woche',
+    name: "Frische-Aktion: Regionales Gemüse",
+    desc: "Beim Kauf von regionalem Gemüse ab 15€ erhalten Sie eine praktische Baumwolltasche GRATIS dazu! Perfekt für Ihren nächsten Einkauf.",
+    img: "/promo.png",
+    validity: "Gültig bis Samstag",
+    badge: "Top Deal der Woche",
   }
 
   const productCategories = [
     {
-      title: 'Wasser',
-      subtitle: '5 Kategorien',
+      title: "Wasser",
+      subtitle: "5 Kategorien",
       items: [
-        'Mineralwasser',
-        'Heilwasser',
-        'Tafelwasser',
-        'Aromatisiertes Wasser',
-        'Babywasser',
+        "Mineralwasser",
+        "Heilwasser",
+        "Tafelwasser",
+        "Aromatisiertes Wasser",
+        "Babywasser",
       ],
-      img: '/wasser.png',
+      img: "/wasser.png",
     },
     {
-      title: 'Bier',
-      subtitle: '6 Kategorien',
+      title: "Bier",
+      subtitle: "6 Kategorien",
       items: [
-        'Pils',
-        'Weizen',
-        'Helles',
-        'Schwarzbier',
-        'Alkoholfreies Bier',
-        'Craft Beer',
+        "Pils",
+        "Weizen",
+        "Helles",
+        "Schwarzbier",
+        "Alkoholfreies Bier",
+        "Craft Beer",
       ],
-      img: '/beer.png',
+      img: "/beer.png",
     },
     {
-      title: 'Limonade & Cola',
-      subtitle: '5 Kategorien',
+      title: "Limonade & Cola",
+      subtitle: "5 Kategorien",
       items: [
-        'Cola & Cola-Mix',
-        'Orangenlimonade',
-        'Zitronenlimonade',
-        'Fassbrause',
-        'Energy Drinks',
+        "Cola & Cola-Mix",
+        "Orangenlimonade",
+        "Zitronenlimonade",
+        "Fassbrause",
+        "Energy Drinks",
       ],
-      img: '/limonade.png',
+      img: "/limonaden.jpg",
     },
     {
-      title: 'Wein & Sekt',
-      subtitle: '5 Kategorien',
+      title: "Wein & Sekt",
+      subtitle: "5 Kategorien",
       items: [
-        'Rotwein',
-        'Weißwein',
-        'Rosé',
-        'Sekt & Prosecco',
-        'Glühwein',
+        "Rotwein",
+        "Weißwein",
+        "Rosé",
+        "Sekt & Prosecco",
+        "Glühwein",
       ],
-      img: '/wein.jpg',
+      img: "/wein.jpg",
     },
     {
-      title: 'Fruchthaltige Getränke',
-      subtitle: '5 Kategorien',
+      title: "Fruchthaltige Getränke",
+      subtitle: "5 Kategorien",
       items: [
-        'Apfelsaft',
-        'Orangensaft',
-        'Multivitamin',
-        'Gemüsesäfte',
-        'Bio-Säfte',
+        "Apfelsaft",
+        "Orangensaft",
+        "Multivitamin",
+        "Gemüsesäfte",
+        "Bio-Säfte",
       ],
-      img: '/fruchtsaft.jpeg',
+      img: "/fruchtsaft.jpeg",
     },
     {
-      title: 'Spirituosen',
-      subtitle: '6 Kategorien',
+      title: "Spirituosen",
+      subtitle: "6 Kategorien",
       items: [
-        'Whisky',
-        'Gin',
-        'Wodka',
-        'Rum',
-        'Liköre',
-        'Kräuterschnaps',
+        "Whisky",
+        "Gin",
+        "Wodka",
+        "Rum",
+        "Liköre",
+        "Kräuterschnaps",
       ],
-      img: '/spirituosen.jpg',
+      img: "/spirituosen.jpg",
     },
   ]
+
+  const buttonStyle =
+    "mt-4 inline-flex items-center justify-center bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors"
 
   return (
     <main className="flex-grow bg-[#FFFBF5]">
 
-      {/* Banner */}
-      <section className="relative">
+      {/* HERO BANNER */}
+      <section className="relative w-full h-[230px] md:h-[280px] overflow-hidden">
+
         <img
           src="/banner.png"
           alt="Banner"
-          className="w-full h-[250px] md:h-[350px] lg:h-[450px] object-cover"
+          className="absolute inset-0 w-full h-full object-cover"
         />
-      </section>
 
+        <div className="absolute inset-0 bg-black/30"></div>
 
-      {/* Aktuelle Angebote with Animated Bubbles */}
-      <section className="relative overflow-hidden py-16 px-4 text-center">
+        <div className="absolute inset-0 flex items-center justify-center px-4">
 
-        {/* Animated bubbles */}
-        <div className="absolute inset-0 -z-10">
+          <div className="relative bg-orange-500/90 rounded-2xl px-8 py-6 max-w-3xl text-center shadow-xl overflow-hidden">
 
-          <motion.div
-            className="absolute w-72 h-72 bg-orange-300 rounded-full blur-3xl opacity-40"
-            animate={{ y: [0, -40, 0], x: [0, 30, 0] }}
-            transition={{ duration: 10, repeat: Infinity }}
-            style={{ top: '10%', left: '10%' }}
-          />
+            <AnimatedBubbles />
 
-          <motion.div
-            className="absolute w-96 h-96 bg-orange-400 rounded-full blur-3xl opacity-30"
-            animate={{ y: [0, 50, 0], x: [0, -40, 0] }}
-            transition={{ duration: 12, repeat: Infinity }}
-            style={{ bottom: '10%', right: '10%' }}
-          />
+            <h1 className="relative text-3xl md:text-4xl font-bold text-white mb-2">
+              Aktuelle Angebote
+            </h1>
 
-          <motion.div
-            className="absolute w-60 h-60 bg-orange-200 rounded-full blur-2xl opacity-40"
-            animate={{ y: [0, -30, 0], x: [0, 20, 0] }}
-            transition={{ duration: 8, repeat: Infinity }}
-            style={{ top: '40%', left: '50%' }}
-          />
+            <p className="relative text-white/90 text-lg">
+              Entdecken Sie unsere wöchentlichen Highlights und sparen Sie bei Ihrem nächsten Einkauf.
+            </p>
+
+          </div>
 
         </div>
 
-        <div className="max-w-4xl mx-auto">
-
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-4xl md:text-5xl font-bold mb-6"
-          >
-            Aktuelle Angebote
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            className="text-lg md:text-xl text-gray-700 max-w-2xl mx-auto"
-          >
-            Entdecken Sie unsere wöchentlichen Highlights und sparen Sie bei Ihrem nächsten Einkauf.
-          </motion.p>
-
-        </div>
       </section>
 
 
-      {/* Aktueller Prospekt */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+      {/* PROSPEKT */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
-        <div className="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100 p-6 md:p-12">
+        <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-6 md:p-12">
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
 
@@ -193,7 +165,7 @@ export function AngebotePage() {
                 Blättern Sie durch unseren aktuellen Prospekt und entdecken Sie alle Angebote der Woche bequem von zu Hause aus.
               </p>
 
-              <button className="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors">
+              <button className={buttonStyle}>
                 Prospekt herunterladen (PDF)
               </button>
 
@@ -206,10 +178,10 @@ export function AngebotePage() {
       </section>
 
 
-      {/* Top Deal */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+      {/* TOP DEAL */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
 
-        <div className="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100 p-6 md:p-12 flex flex-col md:flex-row items-center gap-8">
+        <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-6 md:p-12 flex flex-col md:flex-row items-center gap-8">
 
           <img
             src={topDeal.img}
@@ -238,7 +210,7 @@ export function AngebotePage() {
 
             <Link
               to="/marktfinder"
-              className="inline-block bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors"
+              className={buttonStyle}
             >
               Jetzt im Markt finden
             </Link>
@@ -250,9 +222,8 @@ export function AngebotePage() {
       </section>
 
 
-      {/* Product Categories */}
-
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {/* PRODUCT CATEGORIES */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
         {productCategories.map((cat, idx) => (
 
@@ -285,10 +256,9 @@ export function AngebotePage() {
 
             </div>
 
+            <div className="p-6 flex flex-col flex-grow">
 
-            <div className="p-6 flex-grow">
-
-              <ul className="space-y-2 text-gray-700 mb-4">
+              <ul className="space-y-2 text-gray-700 mb-6">
 
                 {cat.items.map((item, i) => (
 
@@ -306,7 +276,7 @@ export function AngebotePage() {
 
               <Link
                 to="/marktfinder"
-                className="mt-auto inline-block bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors text-center"
+                className="mt-auto inline-flex items-center justify-center bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors"
               >
                 Produkt ansehen
               </Link>
@@ -320,9 +290,8 @@ export function AngebotePage() {
       </section>
 
 
-      {/* Final Info */}
-
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+      {/* FINAL INFO */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
 
         <div className="bg-[#2d5a27] rounded-3xl p-8 md:p-12 text-white text-center">
 
@@ -342,7 +311,7 @@ export function AngebotePage() {
 
           <Link
             to="/marktfinder"
-            className="inline-block bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors"
+            className="inline-flex items-center justify-center bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors"
           >
             Zum Marktfinder
           </Link>
