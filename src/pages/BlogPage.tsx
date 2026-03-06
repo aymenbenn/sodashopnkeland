@@ -1,14 +1,32 @@
 // src/pages/BlogPage.tsx
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FloatingContactBar } from '../components/ContactIconButtons';
 import { productCategories } from '../data/productCategories';
 import { AnimatedBubbles } from '../components/AnimatedBubbles';
 
 export const BlogPage: React.FC = () => {
   const [modalContent, setModalContent] = useState<{ title: string; description: string } | null>(null);
+  const navigate = useNavigate();
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
+      {/* Banner Section */}
+      <section className="relative bg-orange-500 flex flex-col items-center justify-center py-16">
+        <AnimatedBubbles />
+        <img
+          src="/recipebanner.png"
+          alt="Recipe Banner"
+          className="w-full max-w-4xl object-cover rounded-3xl shadow-lg"
+        />
+        <button
+          onClick={() => navigate('/recipes')}
+          className="mt-8 bg-white text-orange-500 font-bold px-6 py-3 rounded-xl shadow hover:bg-gray-100 transition-colors"
+        >
+          See Recipes
+        </button>
+      </section>
+
       {/* Main Blog Section */}
       <main className="flex-grow max-w-7xl mx-auto px-4 py-16 space-y-24 relative">
         <h1 className="text-5xl font-extrabold mb-16 text-center text-gray-900">Blog & Rezepte</h1>
