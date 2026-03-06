@@ -168,8 +168,9 @@ export function AngebotePage() {
 
       {/* FINAL INFO */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-        <div className="bg-orange-700 rounded-3xl p-8 md:p-12 text-white text-center">
-          <InfoIcon className="w-12 h-12 text-orange-200 mx-auto mb-6" />
+       <div className="relative bg-gradient-to-br from-orange-600 via-orange-500 to-amber-500 py-16 text-white text-center overflow-hidden">
+        <AnimatedBubbles />
+     
           <h3 className="text-2xl md:text-3xl font-bold mb-4">Nicht das Richtige gefunden?</h3>
           <p className="text-lg text-orange-50 mb-8">
             Unser Sortiment variiert je nach Standort und Saison. Sprechen Sie unsere Mitarbeiter vor Ort an – wir bestellen gerne spezielle Wünsche für Sie!
