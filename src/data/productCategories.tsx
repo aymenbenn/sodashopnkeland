@@ -31,7 +31,7 @@ Unsere Exklusivmarke Fruchtgarten steht für erlesene Säfte voller natürlicher
     title: 'Limonade & Cola',
     subtitle: '5 Kategorien',
     items: ['Cola & Cola-Mix', 'Orangenlimonade', 'Zitronenlimonade', 'Fassbrause', 'Energy Drinks'],
-    img: '/limonade.png',
+    img: '/Cola.jpg',
     blogText: `Eine Glas frische Limonade wird hier eingeschenkt, in unseren Fristo Märkten finden Sie sicher die passende Marke und tolle Angebote.  
 Manchmal muss es einfach etwas mit Geschmack sein! Dafür bieten wir in unserem Getränkesortiment viele verschiedene Alternativen mit und ohne Zucker.  
 Unsere Eigenmarke Vitaperle: Fruchtige Limonade, Apfelschorle, Iso-Power und Cola-Mix – erfrischend, spritzig und ideal für jeden Moment des Tages.`
