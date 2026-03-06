@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FileTextIcon, BookOpenIcon, BuildingIcon } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { productCategories } from '../data/productCategories';
 import { AnimatedBubbles } from '../components/AnimatedBubbles';
 
 export const SortimentPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'info' | 'brands'>('info');
+  const navigate = useNavigate(); // ✅ useNavigate for reliable routing
 
-  // Marques/Boissons avec images locales
   const brands = [
     { name: 'Radler', img: '/radler.png', desc: 'Erfrischendes Bier-Mixgetränk mit Zitrone.' },
     { name: 'Weinschorle', img: '/weinschorle.png', desc: 'Leichte Mischung aus Wein und Sprudelwasser.' },
@@ -86,6 +86,7 @@ export const SortimentPage: React.FC = () => {
                 whileHover={{ scale: 1.03 }}
                 className="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden flex flex-col"
               >
+                {/* Image */}
                 <div className="h-48 relative overflow-hidden flex items-center justify-center">
                   <img src={cat.img} alt={cat.title} className="absolute inset-0 w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
@@ -94,8 +95,10 @@ export const SortimentPage: React.FC = () => {
                     <span className="text-sm opacity-90 font-medium">{cat.subtitle}</span>
                   </div>
                 </div>
-                <div className="p-6 flex-grow">
-                  <ul className="space-y-2 text-gray-700 mb-4">
+
+                {/* Content */}
+                <div className="p-6 flex flex-col flex-grow">
+                  <ul className="space-y-2 text-gray-700 mb-4 flex-grow">
                     {cat.items.map((item, i) => (
                       <li key={i} className="flex items-center">
                         <span className="w-2 h-2 bg-orange-500 rounded-full mr-3"></span>
@@ -103,19 +106,21 @@ export const SortimentPage: React.FC = () => {
                       </li>
                     ))}
                   </ul>
-                  <Link
-                    to="/blog"
-                    className="mt-auto inline-block bg-orange-600 text-white px-4 py-2 rounded hover:bg-orange-700 transition-colors text-center"
+
+                  {/* ✅ Aligned Button at bottom */}
+                  <button
+                    onClick={() => navigate('/blog')}
+                    className="mt-auto bg-orange-600 text-white px-4 py-2 rounded hover:bg-orange-700 transition-colors"
                   >
                     Produkt ansehen
-                  </Link>
+                  </button>
                 </div>
               </motion.div>
             ))}
           </motion.div>
         )}
 
-        {/* Brands Tab with your 5 drinks */}
+        {/* Brands Tab */}
         {activeTab === 'brands' && (
           <motion.div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
             {brands.map((brand, index) => (
