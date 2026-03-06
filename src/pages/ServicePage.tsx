@@ -25,11 +25,11 @@ export function ServicePage() {
   return (
     <div className="w-full pb-20">
       {/* Header */}
-      <div className="relative bg-gradient-to-br from-[#2d5a27] via-green-700 to-green-600 py-16 text-white text-center overflow-hidden">
+      <div className="relative bg-gradient-to-br from-orange-600 via-orange-500 to-amber-500 py-16 text-white text-center overflow-hidden">
         <AnimatedBubbles />
         <div className="relative z-10">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Unser Service</h1>
-          <p className="text-xl text-green-50 max-w-2xl mx-auto px-4">
+          <p className="text-xl text-orange-50 max-w-2xl mx-auto px-4">
             Mehr als nur Einkaufen – wir bieten Ihnen praktische Services für
             Ihren Alltag.
           </p>
@@ -58,20 +58,20 @@ export function ServicePage() {
             </p>
             <ul className="space-y-3 mb-8">
               <li className="flex items-center text-gray-700 font-medium">
-                <span className="w-2 h-2 bg-green-600 rounded-full mr-3"></span>
+                <span className="w-2 h-2 bg-orange-600 rounded-full mr-3"></span>
                 Paketannahme & -abholung
               </li>
               <li className="flex items-center text-gray-700 font-medium">
-                <span className="w-2 h-2 bg-green-600 rounded-full mr-3"></span>
+                <span className="w-2 h-2 bg-orange-600 rounded-full mr-3"></span>
                 Briefmarkenverkauf
               </li>
               <li className="flex items-center text-gray-700 font-medium">
-                <span className="w-2 h-2 bg-green-600 rounded-full mr-3"></span>
+                <span className="w-2 h-2 bg-orange-600 rounded-full mr-3"></span>
                 Retourenabwicklung
               </li>
             </ul>
             <div className="flex gap-4">
-              <button className="w-full py-4 bg-[#2d5a27] text-white font-bold rounded-xl hover:bg-green-800 transition-colors flex items-center justify-center">
+              <button className="w-full py-4 bg-[#2d5a27] text-white font-bold rounded-xl hover:bg-orange-800 transition-colors flex items-center justify-center">
                 <MessageCircleIcon className="w-5 h-5 mr-2" />
                 Markt kontaktieren
               </button>
@@ -96,20 +96,20 @@ export function ServicePage() {
             </p>
             <ul className="space-y-3 mb-8">
               <li className="flex items-center text-gray-700 font-medium">
-                <span className="w-2 h-2 bg-green-600 rounded-full mr-3"></span>
+                <span className="w-2 h-2 bg-orange-600 rounded-full mr-3"></span>
                 Lotto-Annahmestelle
               </li>
               <li className="flex items-center text-gray-700 font-medium">
-                <span className="w-2 h-2 bg-green-600 rounded-full mr-3"></span>
+                <span className="w-2 h-2 bg-orange-600 rounded-full mr-3"></span>
                 Geschenkkarten & Gutscheine
               </li>
               <li className="flex items-center text-gray-700 font-medium">
-                <span className="w-2 h-2 bg-green-600 rounded-full mr-3"></span>
+                <span className="w-2 h-2 bg-orange-600 rounded-full mr-3"></span>
                 Bargeldabhebung ab 10€ Einkaufswert
               </li>
             </ul>
             <div className="flex gap-4">
-              <button className="w-full py-4 border-2 border-[#2d5a27] text-[#2d5a27] font-bold rounded-xl hover:bg-green-50 transition-colors">
+              <button className="w-full py-4 border-2 border-[#2d5a27] text-[#2d5a27] font-bold rounded-xl hover:bg-orange-50 transition-colors">
                 Mehr erfahren
               </button>
             </div>
@@ -133,7 +133,7 @@ export function ServicePage() {
 
                   <span className="font-bold text-[#2d5a27] pr-4">{faq.q}</span>
                   {openFaq === index ?
-                <ChevronUpIcon className="w-5 h-5 text-green-600 flex-shrink-0" /> :
+                <ChevronUpIcon className="w-5 h-5 text-orange-600 flex-shrink-0" /> :
 
                 <ChevronDownIcon className="w-5 h-5 text-gray-400 flex-shrink-0" />
                 }
