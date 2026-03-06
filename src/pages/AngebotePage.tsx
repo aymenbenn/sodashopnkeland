@@ -179,7 +179,7 @@ export function AngebotePage() {
             * Hinweis: Die Verfügbarkeit einzelner Produkte kann je nach Filiale variieren.
           </p>
           <Link
-            to="/marktfinder"
+            to="/blog"
             className="inline-flex items-center justify-center bg-orange-600 text-white px-6 py-3 rounded-lg hover:bg-orange-700 transition-colors"
           >
             Zum Marktfinder
