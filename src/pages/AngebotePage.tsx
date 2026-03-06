@@ -1,22 +1,19 @@
 import React, { useState } from 'react';
 import { AnimatedBubbles } from '../components/AnimatedBubbles';
-import { InfoIcon, FileTextIcon, BookOpenIcon, BuildingIcon, Clock, ShoppingCart } from 'lucide-react';
+import { InfoIcon, FileTextIcon, BookOpenIcon, BuildingIcon, Clock, ShoppingCart, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export function SortimentPage() {
   const [activeTab, setActiveTab] = useState<'info' | 'blog' | 'brands'>('info');
 
-  // Top Deal / Prospekt info
   const topDeal = {
-    name: 'Regionales Gemüse',
-    desc: 'Beim Kauf ab 15€ erhalten Sie eine Baumwolltasche GRATIS',
-    img: '/banner.png',
-    discount: 'Gratis Tasche',
+    name: 'Frische-Aktion: Regionales Gemüse',
+    desc: 'Beim Kauf von regionalem Gemüse ab 15€ erhalten Sie eine praktische Baumwolltasche GRATIS dazu! Perfekt für Ihren nächsten Einkauf.',
+    img: '/promo.png',
     validity: 'Gültig bis Samstag',
-    color: 'from-green-500 to-green-600',
+    badge: 'Top Deal der Woche',
   };
 
-  // Product categories
   const productCategories = [
     {
       title: 'Wasser',
@@ -57,123 +54,92 @@ export function SortimentPage() {
   ];
 
   return (
-    <div className="w-full pb-20">
-      {/* Header */}
-      <section className="relative bg-gradient-to-br from-[#2d5a27] via-green-700 to-green-600 text-white py-16 text-center overflow-hidden">
-        <AnimatedBubbles />
-        <div className="relative z-10 max-w-3xl mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Unser Sortiment</h1>
-          <p className="text-xl text-green-50 mb-8">
-            Entdecken Sie unsere wöchentlichen Highlights und sparen Sie bei Ihrem nächsten Einkauf.
-          </p>
+    <main className="flex-grow bg-[#FFFBF5]">
+      {/* Banner */}
+      <section className="relative">
+        <img src="/banner.png" alt="Banner" className="w-full object-cover" />
+      </section>
+
+      {/* Aktuelle Angebote Intro */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
+        <h1 className="text-4xl md:text-5xl font-bold mb-4">Aktuelle Angebote</h1>
+        <p className="text-xl text-gray-700 max-w-2xl mx-auto">
+          Entdecken Sie unsere wöchentlichen Highlights und sparen Sie bei Ihrem nächsten Einkauf.
+        </p>
+      </section>
+
+      {/* Aktueller Prospekt */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+        <div className="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100 p-6 md:p-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <img src="/promo.png" alt="Prospekt Vorschau" className="rounded-2xl w-full object-cover shadow-md" />
+            <div className="space-y-4">
+              <h2 className="text-2xl font-bold">Aktueller Prospekt</h2>
+              <p className="text-gray-500">Gültig bis 15.08.</p>
+              <span className="inline-block bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Prospekt Vorschau</span>
+              <p className="text-gray-700">Wochenangebote entdecken</p>
+              <p className="text-gray-600">
+                Gültig von Montag, 09.08. bis Samstag, 15.08.<br />
+                Blättern Sie durch unseren aktuellen Prospekt und entdecken Sie alle Angebote der Woche bequem von zu Hause aus.
+              </p>
+              <button className="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors">
+                Prospekt herunterladen (PDF)
+              </button>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Tabs */}
-      <div className="bg-white border-b border-gray-200 shadow-sm sticky top-20 z-40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex space-x-8 overflow-x-auto">
-            <button
-              onClick={() => setActiveTab('info')}
-              className={`py-4 px-2 border-b-2 font-bold flex items-center whitespace-nowrap transition-colors ${
-                activeTab === 'info' ? 'border-[#2d5a27] text-[#2d5a27]' : 'border-transparent text-gray-500 hover:text-green-700'
-              }`}
-            >
-              <FileTextIcon className="w-4 h-4 mr-2" /> Informationen
-            </button>
-            <button
-              onClick={() => setActiveTab('blog')}
-              className={`py-4 px-2 border-b-2 font-bold flex items-center whitespace-nowrap transition-colors ${
-                activeTab === 'blog' ? 'border-[#2d5a27] text-[#2d5a27]' : 'border-transparent text-gray-500 hover:text-green-700'
-              }`}
-            >
-              <BookOpenIcon className="w-4 h-4 mr-2" /> Blog & Rezepte
-            </button>
-            <button
-              onClick={() => setActiveTab('brands')}
-              className={`py-4 px-2 border-b-2 font-bold flex items-center whitespace-nowrap transition-colors ${
-                activeTab === 'brands' ? 'border-[#2d5a27] text-[#2d5a27]' : 'border-transparent text-gray-500 hover:text-green-700'
-              }`}
-            >
-              <BuildingIcon className="w-4 h-4 mr-2" /> Unsere Marken
-            </button>
+      {/* Top Deal der Woche */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+        <div className="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100 p-6 md:p-12 flex flex-col md:flex-row items-center gap-8">
+          <img src={topDeal.img} alt="Top Deal" className="rounded-2xl w-full md:w-1/2 object-cover shadow-md" />
+          <div className="flex-1 space-y-4">
+            <span className="bg-green-600 text-white px-3 py-1 rounded-full text-sm font-bold">{topDeal.badge}</span>
+            <p className="text-gray-500 flex items-center gap-2">
+              <Clock className="w-4 h-4" /> {topDeal.validity}
+            </p>
+            <h3 className="text-3xl font-bold text-gray-900">{topDeal.name}</h3>
+            <p className="text-gray-700">{topDeal.desc}</p>
+            <Link className="inline-block bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors">
+              Jetzt im Markt finden
+            </Link>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 space-y-12">
-        {/* Top Deal Section */}
-        {activeTab === 'info' && (
-          <div className="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100">
-            <div className="grid grid-cols-1 lg:grid-cols-2">
-              <div className={`relative flex items-center justify-center overflow-hidden bg-gradient-to-br ${topDeal.color} p-8`}>
-                <img
-                  src={topDeal.img}
-                  alt={topDeal.name}
-                  className="relative z-10 w-full max-w-md h-auto object-contain transform hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute top-4 left-4 bg-green-700 text-white font-bold px-3 py-1 rounded-lg shadow-md z-20">
-                  {topDeal.discount}
-                </div>
+      {/* Product Categories */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {productCategories.map((cat, idx) => (
+          <div key={idx} className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 flex flex-col">
+            <div className="h-48 relative overflow-hidden flex items-center justify-center">
+              <img src={cat.img} alt={cat.title} className="absolute inset-0 w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+              <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                <h3 className="text-2xl font-bold">{cat.title}</h3>
+                <span className="text-sm">{cat.subtitle}</span>
               </div>
-              <div className="p-8 md:p-12 flex flex-col justify-center">
-                <div className="flex items-center gap-3 mb-6">
-                  <span className="bg-green-600 text-white px-3 py-1 rounded-full text-sm font-bold shadow-md">
-                    Top Deal der Woche
-                  </span>
-                  <span className="flex items-center text-gray-500 text-sm font-medium">
-                    <Clock className="w-4 h-4 mr-1" /> {topDeal.validity}
-                  </span>
-                </div>
-                <h2 className="text-3xl md:text-4xl font-bold text-green-900 mb-4">{topDeal.name}</h2>
-                <p className="text-gray-700 text-lg mb-8 leading-relaxed">{topDeal.desc}</p>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Link className="flex-1 bg-green-600 text-white font-bold py-3 px-6 rounded-xl hover:bg-green-700 transition-colors flex items-center justify-center">
-                    <ShoppingCart className="w-5 h-5 mr-2" /> Jetzt im Markt finden
-                  </Link>
-                  <Link className="flex-1 border-2 border-green-700 text-green-700 font-bold py-3 px-6 rounded-xl hover:bg-green-50 transition-colors flex items-center justify-center">
-                    Prospekt (PDF)
-                  </Link>
-                </div>
-              </div>
+            </div>
+            <div className="p-6 flex-grow">
+              <ul className="space-y-2 text-gray-700 mb-4">
+                {cat.items.map((item, i) => (
+                  <li key={i} className="flex items-center">
+                    <span className="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <Link className="mt-auto inline-block bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-center">
+                Produkt ansehen
+              </Link>
             </div>
           </div>
-        )}
+        ))}
+      </section>
 
-        {/* Product Categories Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {productCategories.map((cat, idx) => (
-            <div key={idx} className="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden hover:shadow-xl transition-shadow flex flex-col">
-              <div className="h-48 relative overflow-hidden flex items-center justify-center">
-                <img src={cat.img} alt={cat.title} className="absolute inset-0 w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
-                <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                  <h2 className="text-2xl font-bold mb-1">{cat.title}</h2>
-                  <span className="text-sm opacity-90 font-medium">{cat.subtitle}</span>
-                </div>
-              </div>
-              <div className="p-6 flex-grow">
-                <ul className="space-y-2 text-gray-700 mb-4">
-                  {cat.items.map((item, i) => (
-                    <li key={i} className="flex items-center">
-                      <span className="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-                <Link
-                  to="/marktfinder"
-                  className="mt-auto inline-block bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors text-center"
-                >
-                  Produkt ansehen
-                </Link>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Final Info Section */}
-        <div className="bg-[#2d5a27] rounded-3xl p-8 md:p-12 text-white text-center relative overflow-hidden mt-12">
+      {/* Final Info Section */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+        <div className="bg-[#2d5a27] rounded-3xl p-8 md:p-12 text-white text-center relative overflow-hidden">
           <div className="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-green-500 rounded-full opacity-20 blur-2xl"></div>
           <div className="absolute bottom-0 left-0 -mb-10 -ml-10 w-40 h-40 bg-green-500 rounded-full opacity-20 blur-2xl"></div>
           <div className="relative z-10 max-w-3xl mx-auto">
@@ -185,15 +151,12 @@ export function SortimentPage() {
             <p className="text-sm text-green-200 italic mb-4">
               * Hinweis: Die Verfügbarkeit einzelner Produkte kann je nach Filiale variieren.
             </p>
-            <Link
-              to="/marktfinder"
-              className="inline-block bg-green-600 text-white px-6 py-3 rounded hover:bg-green-700 transition-colors"
-            >
+            <Link className="inline-block bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors">
               Zum Marktfinder
             </Link>
           </div>
         </div>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 }
