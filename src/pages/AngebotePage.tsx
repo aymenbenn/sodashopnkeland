@@ -75,7 +75,7 @@ export function AngebotePage() {
   {/* Banner image placeholder */}
   <div className="mt-12 max-w-5xl mx-auto">
     <img
-      src="/banner.png" // replace with your image
+      src="/banner-2.png" // replace with your image
       alt="Banner"
       className="w-full h-auto rounded-2xl shadow-lg object-cover"
     />
@@ -156,7 +156,7 @@ export function AngebotePage() {
                 ))}
               </ul>
               <Link
-                to="/marktfinder"
+                to="/blog"
                 className="mt-auto inline-flex items-center justify-center bg-orange-600 text-white px-4 py-2 rounded hover:bg-orange-700 transition-colors"
               >
                 Produkt ansehen
@@ -179,7 +179,7 @@ export function AngebotePage() {
             * Hinweis: Die Verfügbarkeit einzelner Produkte kann je nach Filiale variieren.
           </p>
           <Link
-            to="/blog"
+            to="/marktfinder"
             className="inline-flex items-center justify-center bg-orange-600 text-white px-6 py-3 rounded-lg hover:bg-orange-700 transition-colors"
           >
             Zum Marktfinder
