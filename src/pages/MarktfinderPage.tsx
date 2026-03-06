@@ -213,19 +213,19 @@ export function MarktfinderPage() {
                 <div className="flex gap-2">
 
            <img
-  src="/lotto.jpg"
+  src="/lotto.JPG"
   alt="Lotto"
   className="h-6 w-auto"
 />
 
 <img
-  src="/post.jpg"
+  src="/post.JPG"
   alt="Post"
   className="h-6 w-auto"
 />
 
 <img
-  src="/dhl.jpg"
+  src="/dhl.JPG"
   alt="DHL"
   className="h-6 w-auto"
 />
