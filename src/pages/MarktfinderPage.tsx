@@ -168,17 +168,15 @@ export function MarktfinderPage() {
             className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl border flex flex-col">
 
 
-              <div className="flex justify-between mb-4">
+            <div className="flex justify-between mb-4">
+  <h3 className="font-bold text-lg text-[#1E3A5F]">
+    {store.name}
+  </h3>
 
-                <h3 className="font-bold text-lg text-[#1E3A5F]">
-                  {store.name}
-                </h3>
-
-                <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">
-                  Geöffnet
-                </span>
-
-              </div>
+  <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded min-w-[60px] inline-block text-center">
+    Geöffnet
+  </span>
+</div>
 
               <div className="space-y-3 text-gray-600 mb-6">
 
