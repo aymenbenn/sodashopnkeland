@@ -4,20 +4,7 @@ import { FloatingContactBar } from '../components/ContactIconButtons';
 import { productCategories } from '../data/productCategories';
 import { AnimatedBubbles } from '../components/AnimatedBubbles';
 
-const topCards = [
-  { title: 'Erfrischendes Zitronenwasser', description: 'Perfekt für heiße Sommertage – einfach, gesund und lecker.', img: '/zitronenwasser.png' },
-  { title: 'Hausgemachte Limonade', description: 'Mit frischen Früchten, ohne Zuckerzusatz – ein Genuss für Groß & Klein.', img: '/hausgemachte_limonade.png' },
-  { title: 'Fruchtige Smoothies', description: 'Vitaminreich & erfrischend – ideal für einen Energieschub.', img: '/fruchtige_smoothies.png' },
-  { title: 'Gin-Cocktail Ideen', description: 'Exklusive Rezepte für besondere Anlässe und entspannte Abende.', img: '/gin_cocktail.png' },
-];
 
-export const BlogPage: React.FC = () => {
-  const [modalContent, setModalContent] = useState<{ title: string; description: string } | null>(null);
-
-  return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
-
-      {/* Top Recipes Section */}
       <section className="relative max-w-7xl mx-auto px-4 py-16 overflow-hidden">
         <AnimatedBubbles /> {/* Reuse HomePage bubbles */}
         <h2 className="text-4xl font-bold mb-8 text-gray-900 text-center z-10 relative">Unsere Top-Rezepte</h2>
