@@ -10,11 +10,11 @@ export const SortimentPage: React.FC = () => {
 
   // Marques/Boissons avec images locales
   const brands = [
-    { name: 'Radler', img: '/images/radler.png', desc: 'Erfrischendes Bier-Mixgetränk mit Zitrone.' },
-    { name: 'Weinschorle', img: '/images/weinschorle.png', desc: 'Leichte Mischung aus Wein und Sprudelwasser.' },
-    { name: 'Apfelschorle', img: '/images/apfelschorle.png', desc: 'Spritziger Apfelsaft-Mix – natürlich erfrischend.' },
-    { name: 'Spezi', img: '/images/spezi.png', desc: 'Beliebtes Mischgetränk aus Cola und Orangenlimonade.' },
-    { name: 'Cola-Weizen', img: '/images/cola-weizen.png', desc: 'Kombination aus Cola und Weizenbier für Abwechslung.' },
+    { name: 'Radler', img: '/radler.png', desc: 'Erfrischendes Bier-Mixgetränk mit Zitrone.' },
+    { name: 'Weinschorle', img: '/weinschorle.png', desc: 'Leichte Mischung aus Wein und Sprudelwasser.' },
+    { name: 'Apfelschorle', img: '/apfelschorle.png', desc: 'Spritziger Apfelsaft-Mix – natürlich erfrischend.' },
+    { name: 'Spezi', img: '/spezi.png', desc: 'Beliebtes Mischgetränk aus Cola und Orangenlimonade.' },
+    { name: 'Cola-Weizen', img: '/cola-weizen.png', desc: 'Kombination aus Cola und Weizenbier für Abwechslung.' },
   ];
 
   return (
