@@ -12,10 +12,10 @@ export const SortimentPage: React.FC = () => {
   return (
     <div className="w-full pb-20">
       {/* Header */}
-      <div className="relative bg-gradient-to-br from-[#2d5a27] via-green-700 to-green-600 py-16 text-white text-center overflow-hidden">
+      <div className="relative bg-gradient-to-br from-[#2d5a27] via-orange-700 to-orange-600 py-16 text-white text-center overflow-hidden">
         <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}>
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Unser Sortiment</h1>
-          <p className="text-xl text-green-50 max-w-2xl mx-auto px-4">
+          <p className="text-xl text-orange-50 max-w-2xl mx-auto px-4">
             Frische und Vielfalt für Ihren Alltag. Entdecken Sie unsere Produkte, Rezepte und Partnermarken.
           </p>
         </motion.div>
@@ -46,7 +46,7 @@ export const SortimentPage: React.FC = () => {
             <button
               onClick={() => setActiveTab('brands')}
               className={`py-4 px-2 border-b-2 font-bold flex items-center whitespace-nowrap transition-colors ${
-                activeTab === 'brands' ? 'border-[#2d5a27] text-[#2d5a27]' : 'border-transparent text-gray-500 hover:text-green-700'
+                activeTab === 'brands' ? 'border-[#2d5a27] text-[#2d5a27]' : 'border-transparent text-gray-500 hover:text-orange-700'
               }`}
             >
               <BuildingIcon className="w-4 h-4 mr-2" />
@@ -75,12 +75,12 @@ export const SortimentPage: React.FC = () => {
                   <ul className="space-y-2 text-gray-700 mb-4">
                     {cat.items.map((item, i) => (
                       <li key={i} className="flex items-center">
-                        <span className="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
+                        <span className="w-2 h-2 bg-orange-500 rounded-full mr-3"></span>
                         {item}
                       </li>
                     ))}
                   </ul>
-                  <Link to="/marktfinder" className="mt-auto inline-block bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors text-center">
+                  <Link to="/marktfinder" className="mt-auto inline-block bg-orange-600 text-white px-4 py-2 rounded hover:bg-orange-700 transition-colors text-center">
                     Produkt ansehen
                   </Link>
                 </div>
