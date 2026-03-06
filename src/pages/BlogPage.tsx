@@ -4,33 +4,11 @@ import { FloatingContactBar } from '../components/ContactIconButtons';
 import { productCategories } from '../data/productCategories';
 import { AnimatedBubbles } from '../components/AnimatedBubbles';
 
+export const BlogPage: React.FC = () => {
+  const [modalContent, setModalContent] = useState<{ title: string; description: string } | null>(null);
 
-      <section className="relative max-w-7xl mx-auto px-4 py-16 overflow-hidden">
-        <AnimatedBubbles /> {/* Reuse HomePage bubbles */}
-        <h2 className="text-4xl font-bold mb-8 text-gray-900 text-center z-10 relative">Unsere Top-Rezepte</h2>
-        <div className="flex gap-6 overflow-x-auto scrollbar-hide py-4 z-10 relative">
-          {topCards.map((card) => (
-            <div
-              key={card.title}
-              onClick={() => setModalContent(card)}
-              className="cursor-pointer min-w-[250px] flex-shrink-0 bg-white rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300"
-            >
-              <div className="h-40 w-full relative rounded-t-2xl overflow-hidden">
-                <img
-                  src={card.img}
-                  alt={card.title}
-                  className="object-cover w-full h-full transition-transform duration-500 hover:scale-105"
-                />
-              </div>
-              <div className="p-4">
-                <h3 className="text-lg font-bold text-[#FF7F50] mb-2">{card.title}</h3>
-                <p className="text-gray-700 text-sm">{card.description}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
+  return (
+    <div className="min-h-screen flex flex-col bg-gray-50">
       {/* Main Blog Section */}
       <main className="flex-grow max-w-7xl mx-auto px-4 py-16 space-y-24 relative">
         <h1 className="text-5xl font-extrabold mb-16 text-center text-gray-900">Blog & Rezepte</h1>
@@ -52,7 +30,6 @@ import { AnimatedBubbles } from '../components/AnimatedBubbles';
                 alt={cat.title}
                 className="object-cover w-full h-full transition-transform duration-500 hover:scale-105"
               />
-              {/* Orange gradient overlay like HomePage */}
               <div className="absolute inset-0 bg-gradient-to-t from-[#FF7F50]/40 via-orange-400/20 to-transparent rounded-3xl"></div>
             </div>
 
