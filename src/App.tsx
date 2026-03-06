@@ -12,6 +12,7 @@ import { ServicePage } from './pages/ServicePage';
 import { SortimentPage } from './pages/SortimentPage';
 import { UeberUnsPage } from './pages/UeberUnsPage';
 import { BlogPage } from './pages/BlogPage';
+
 export function App() {
   return (
     <BrowserRouter>
