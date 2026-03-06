@@ -9,10 +9,10 @@ import { KontaktPage } from './pages/KontaktPage';
 import { MarktfinderPage } from './pages/MarktfinderPage';
 import { MarktDetailPage } from './pages/MarktDetailPage';
 import { ServicePage } from './pages/ServicePage';
+import { RecipesPage } from './pages/RecipesPage';
 import { SortimentPage } from './pages/SortimentPage';
 import { UeberUnsPage } from './pages/UeberUnsPage';
 import { BlogPage } from './pages/BlogPage';
-import { RecipesPage } from './pages/RecipesPage';
 
 
 export function App() {
@@ -33,10 +33,11 @@ export function App() {
 
             <Route path="/service" element={<ServicePage />} />
             <Route path="/sortiment" element={<SortimentPage />} />
-        <Route path="/recipes" element={<RecipesPage />} />
+        
 
             <Route path="/ueber-uns" element={<UeberUnsPage />} />
        <Route path="/blog" element={<BlogPage />} />
+<Route path="/recipes" element={<RecipesPage />} />
           </Routes>
         </main>
         <Footer />
