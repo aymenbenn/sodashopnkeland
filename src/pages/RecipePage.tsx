@@ -1,13 +1,11 @@
-import React from "react";
-import { motion } from "framer-motion";
-
-export const RecipesPage: React.FC = () => {
-
+import React from 'react'
+import { motion } from 'framer-motion'
+export const ServicePage: React.FC = () => {
   const topCards = [
     {
-      title: "Erfrischendes Zitronenwasser",
-      description: "Perfekt für heiße Sommertage – einfach, gesund und lecker.",
-      img: "/zitronenwasser.png",
+      title: 'Erfrischendes Zitronenwasser',
+      description: 'Perfekt für heiße Sommertage – einfach, gesund und lecker.',
+      img: '/zitronenwasser.png',
       text: `Erfrischendes Zitronenwasser gehört zu den beliebtesten und
       einfachsten Getränken für heiße Sommertage. Es kombiniert frisches
       Wasser mit Zitronen und sorgt für eine natürliche Erfrischung.
@@ -15,41 +13,37 @@ export const RecipesPage: React.FC = () => {
       erfrischend und angenehm im Geschmack ist.`,
     },
     {
-      title: "Hausgemachte Limonade",
-      description: "Mit frischen Früchten – ein Genuss für Groß & Klein.",
-      img: "/hausgemachte_limonade.png",
+      title: 'Hausgemachte Limonade',
+      description: 'Mit frischen Früchten – ein Genuss für Groß & Klein.',
+      img: '/hausgemachte_limonade.png',
       text: `Hausgemachte Limonade ist ein Klassiker unter den
       Sommergetränken. Sie kombiniert frische Früchte, Wasser und
       natürliche Süße zu einem erfrischenden Getränk.`,
     },
     {
-      title: "Fruchtige Smoothies",
-      description: "Vitaminreich & erfrischend – ideal für Energie.",
-      img: "/fruchtige_smoothies.png",
+      title: 'Fruchtige Smoothies',
+      description: 'Vitaminreich & erfrischend – ideal für Energie.',
+      img: '/fruchtige_smoothies.png',
       text: `Fruchtige Smoothies sind eine perfekte Kombination aus
       Geschmack und Nährstoffen. Sie werden aus frischen Früchten
       zubereitet und liefern viele Vitamine.`,
     },
     {
-      title: "Gin-Cocktail Ideen",
-      description: "Perfekt für besondere Anlässe.",
-      img: "/gin_cocktail.png",
+      title: 'Gin-Cocktail Ideen',
+      description: 'Perfekt für besondere Anlässe.',
+      img: '/gin_cocktail.png',
       text: `Gin-Cocktails gehören zu den beliebtesten modernen
       Getränken. Mit verschiedenen Früchten, Kräutern und Tonic
       entstehen kreative Cocktailvariationen.`,
     },
-  ];
-
+  ]
   return (
     <div className="bg-gray-50 min-h-screen">
-
       <section className="text-center py-16 bg-orange-500 text-white">
-        <h1 className="text-4xl font-bold mb-4">
-          Getränke Rezepte entdecken
-        </h1>
+        <h1 className="text-4xl font-bold mb-4">Getränke Rezepte entdecken</h1>
         <p className="max-w-2xl mx-auto">
-          Entdecken Sie erfrischende Getränkeideen und kreative Rezepte
-          für jede Gelegenheit.
+          Entdecken Sie erfrischende Getränkeideen und kreative Rezepte für jede
+          Gelegenheit.
         </p>
       </section>
 
@@ -57,7 +51,9 @@ export const RecipesPage: React.FC = () => {
         {topCards.map((card, index) => (
           <motion.div
             key={index}
-            whileHover={{ y: -10 }}
+            whileHover={{
+              y: -10,
+            }}
             className="bg-white rounded-xl shadow-lg overflow-hidden"
           >
             <img
@@ -71,9 +67,7 @@ export const RecipesPage: React.FC = () => {
                 {card.title}
               </h3>
 
-              <p className="text-gray-500 text-sm mb-3">
-                {card.description}
-              </p>
+              <p className="text-gray-500 text-sm mb-3">{card.description}</p>
 
               <p className="text-gray-600 text-sm leading-relaxed">
                 {card.text}
@@ -82,7 +76,6 @@ export const RecipesPage: React.FC = () => {
           </motion.div>
         ))}
       </section>
-
     </div>
-  );
-};
+  )
+}
