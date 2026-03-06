@@ -7,7 +7,7 @@ import { productCategories } from '../data/productCategories'; // import data
 export const BlogPage: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
-      <Navbar />
+      
 
       <main className="flex-grow max-w-7xl mx-auto px-4 py-16">
         <h1 className="text-4xl font-bold mb-8 text-center">Blog & Rezepte</h1>
@@ -20,7 +20,7 @@ export const BlogPage: React.FC = () => {
         ))}
       </main>
 
-      <Footer />
+   
       <FloatingContactBar />
     </div>
   );
