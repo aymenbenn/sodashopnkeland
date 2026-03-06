@@ -1,71 +1,80 @@
 import React, { useState } from 'react';
-import {
-  InfoIcon,
-  FileTextIcon,
-  BookOpenIcon,
-  BuildingIcon,
-  ArrowRightIcon
-} from 'lucide-react';
-import { AnimatedBubbles } from '../components/AnimatedBubbles';
+import { motion } from 'framer-motion';
+import { InfoIcon, FileTextIcon, BookOpenIcon, BuildingIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-export function SortimentPage() {
-  const [activeTab, setActiveTab] = useState<'info' | 'blog' | 'brands'>('info');
+// Product categories
+const productCategories = [
+  {
+    title: 'Wasser',
+    subtitle: '5 Kategorien',
+    items: ['Mineralwasser', 'Heilwasser', 'Tafelwasser', 'Aromatisiertes Wasser', 'Babywasser'],
+    img: '/wasser.png',
+    blogText: `Wasser erfrischend & vielfältig  
+Durstlöschend, erfrischend oder einfach wohltuend – bei uns finden Sie genau das Richtige für Ihren Geschmack!
+Unsere Eigenmarke Aqualina bietet frisches Gebirgswasser in bester Qualität – erhältlich in den Sorten still, medium und spritzig. Dank der praktischen PET-Flasche ist Aqualina der perfekte Begleiter für unterwegs. Ob im Büro, beim Sport oder auf Ausflügen, mit Aqualina haben Sie immer einen erfrischenden und zuverlässigen Durstlöscher zur Hand – und das zu einem besonders attraktiven Preis.`
+  },
+  {
+    title: 'Bier',
+    subtitle: '6 Kategorien',
+    items: ['Pils', 'Weizen', 'Helles', 'Schwarzbier', 'Alkoholfreies Bier', 'Craft Beer'],
+    img: '/beer.png',
+    blogText: `Ein kühles Weizen, eine Breze und ein Brotzeitbrett, das passende Bier finden Sie garantiert in unseren Fristo Getränkemärkten.  
+Die Liste unserer Biersorten und -lieferanten ist so lang und individuell, wie die Vorlieben unserer Kunden. Deshalb führen wir für Sie einfach alles, was das Herz des Bierliebhabers begehrt – mit und ohne Alkohol.
+Unsere Eigenmarke Adelsdorfer stammt aus dem Herzen Frankens und steht für traditionell gebrautes Bier von höchster Qualität. Mit unserem Adelsdorfer Hell genießen Sie den authentischen Geschmack fränkischer Braukunst – vollmundig, ausgewogen und erfrischend. Qualität muss nicht teuer sein – überzeugen Sie sich selbst!`
+  },
+  {
+    title: 'Fruchthaltige Getränke',
+    subtitle: '5 Kategorien',
+    items: ['Apfelsaft', 'Orangensaft', 'Multivitamin', 'Gemüsesäfte', 'Bio-Säfte'],
+    img: '/fruchtsaft.jpeg',
+    blogText: `Ein kühles Glas mit frischem Saft, garantiert finden Sie in einem unserer Fristo Märkte den richtigen.  
+Der Vitamingehalt und der intensive Geschmack sind die besten Argumente für feine Fruchtsäfte. In unserem Getränkesortiment haben Sie die Wahl aus vielfältigen Fruchtsaftsorten mit unterschiedlich hohen Fruchtanteilen.  
+Unsere Exklusivmarke Fruchtgarten steht für erlesene Säfte voller natürlicher Frische und intensivem Geschmack zu einem attraktiven Preis. Hergestellt aus sorgfältig ausgewählten Früchten, sind unsere Säfte eine gesunde Vitaminquelle und ideal für die tägliche Erfrischung.`
+  },
+  {
+    title: 'Limonade & Cola',
+    subtitle: '5 Kategorien',
+    items: ['Cola & Cola-Mix', 'Orangenlimonade', 'Zitronenlimonade', 'Fassbrause', 'Energy Drinks'],
+    img: '/limonade.png',
+    blogText: `Eine Glas frische Limonade wird hier eingeschenkt, in unseren Fristo Märkten finden Sie sicher die passende Marke und tolle Angebote.  
+Manchmal muss es einfach etwas mit Geschmack sein! Dafür bieten wir in unserem Getränkesortiment viele verschiedene Alternativen mit und ohne Zucker.  
+Unsere Eigenmarke Vitaperle: Fruchtige Limonade, Apfelschorle, Iso-Power und Cola-Mix – erfrischend, spritzig und ideal für jeden Moment des Tages.`
+  },
+  {
+    title: 'Wein & Sekt',
+    subtitle: '5 Kategorien',
+    items: ['Rotwein', 'Weißwein', 'Rosé', 'Sekt & Prosecco', 'Glühwein'],
+    img: '/wein.jpg',
+    blogText: `Ein feines Glas Rotwein, finden Sie garantiert den richtigen Tropfen in einem unserer Fristo Getränkemärkte.  
+Ob Weißwein, Rotwein oder Roséwein – entdecken Sie bei uns eine vielfältige Auswahl an Qualitätsweinen für jeden Geschmack und Anlass. Viele unserer Weine stammen von regionalen Winzern, die mit Leidenschaft und handwerklichem Können arbeiten. Zusätzlich bieten wir eine Auswahl an Bio- und veganen Weinen sowie alkoholfreien Alternativen.`
+  },
+  {
+    title: 'Spirituosen',
+    subtitle: '6 Kategorien',
+    items: ['Whisky', 'Gin', 'Wodka', 'Rum', 'Liköre', 'Kräuterschnaps'],
+    img: '/spirituosen.jpg',
+    blogText: `Spirituosen entdecken Sie bei FRISTO, darunter unsere exklusive Eigenmarke Ammersee Gin. Dieser hochwertige und zugleich preiswerte Gin besticht durch seinen einzigartigen Geschmack.  
+Neben dem Ammersee Gin bieten wir eine Vielzahl weiterer edler Spirituosen, die jeden Anlass bereichern. Von feinen Whiskys über edle Brände bis hin zu exquisiten Likören. Lassen Sie sich von unseren sorgfältig ausgewählten Cocktailempfehlungen inspirieren.`
+  }
+];
 
-  // Product Categories Data with image paths
-  const productCategories = [
-    {
-      title: 'Wasser',
-      subtitle: '5 Kategorien',
-      items: ['Mineralwasser', 'Heilwasser', 'Tafelwasser', 'Aromatisiertes Wasser', 'Babywasser'],
-      img: '/wasser.png',
-    },
-    {
-      title: 'Bier',
-      subtitle: '6 Kategorien',
-      items: ['Pils', 'Weizen', 'Helles', 'Schwarzbier', 'Alkoholfreies Bier', 'Craft Beer'],
-      img: '/beer.png',
-    },
-    {
-      title: 'Limonade & Cola',
-      subtitle: '5 Kategorien',
-      items: ['Cola & Cola-Mix', 'Orangenlimonade', 'Zitronenlimonade', 'Fassbrause', 'Energy Drinks'],
-      img: '/limonade.png',
-    },
-    {
-      title: 'Wein & Sekt',
-      subtitle: '5 Kategorien',
-      items: ['Rotwein', 'Weißwein', 'Rosé', 'Sekt & Prosecco', 'Glühwein'],
-      img: '/wein.jpg',
-    },
-    {
-      title: 'Fruchthaltige Getränke',
-      subtitle: '5 Kategorien',
-      items: ['Apfelsaft', 'Orangensaft', 'Multivitamin', 'Gemüsesäfte', 'Bio-Säfte'],
-      img: '/fruchtsaft.jpeg',
-    },
-    {
-      title: 'Spirituosen',
-      subtitle: '6 Kategorien',
-      items: ['Whisky', 'Gin', 'Wodka', 'Rum', 'Liköre', 'Kräuterschnaps'],
-      img: '/spirituosen.jpg',
-    },
-  ];
+export const SortimentPage: React.FC = () => {
+  const [activeTab, setActiveTab] = useState<'info' | 'brands'>('info');
 
   return (
     <div className="w-full pb-20">
       {/* Header */}
       <div className="relative bg-gradient-to-br from-[#2d5a27] via-green-700 to-green-600 py-16 text-white text-center overflow-hidden">
-        <AnimatedBubbles />
-        <div className="relative z-10">
+        <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}>
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Unser Sortiment</h1>
           <p className="text-xl text-green-50 max-w-2xl mx-auto px-4">
             Frische und Vielfalt für Ihren Alltag. Entdecken Sie unsere Produkte, Rezepte und Partnermarken.
           </p>
-        </div>
+        </motion.div>
       </div>
 
-      {/* Tabs Navigation */}
+      {/* Tabs */}
       <div className="bg-white border-b border-gray-200 shadow-sm sticky top-20 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex space-x-8 overflow-x-auto">
@@ -78,15 +87,15 @@ export function SortimentPage() {
               <FileTextIcon className="w-4 h-4 mr-2" />
               Informationen
             </button>
-            <button
-              onClick={() => setActiveTab('blog')}
-              className={`py-4 px-2 border-b-2 font-bold flex items-center whitespace-nowrap transition-colors ${
-                activeTab === 'blog' ? 'border-[#2d5a27] text-[#2d5a27]' : 'border-transparent text-gray-500 hover:text-green-700'
-              }`}
+
+            <Link
+              to="/blog"
+              className="py-4 px-2 border-b-2 font-bold flex items-center whitespace-nowrap text-gray-500 hover:text-green-700 transition-colors"
             >
               <BookOpenIcon className="w-4 h-4 mr-2" />
               Blog & Rezepte
-            </button>
+            </Link>
+
             <button
               onClick={() => setActiveTab('brands')}
               className={`py-4 px-2 border-b-2 font-bold flex items-center whitespace-nowrap transition-colors ${
@@ -100,111 +109,62 @@ export function SortimentPage() {
         </div>
       </div>
 
+      {/* Tab Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
-        {/* Tab Content: Informationen */}
+        {/* Information Tab */}
         {activeTab === 'info' && (
-          <div className="space-y-12">
-            {/* Prospekt Section */}
-            <div className="bg-white rounded-2xl shadow-md border border-gray-100 p-6">
-              <img src="/banner.png" alt="Banner" className="rounded-2xl w-full object-cover mb-6 shadow-md" />
-
-              <div className="mb-6">
-                <h2 className="text-2xl font-bold mb-1">Aktueller Prospekt</h2>
-                <p className="text-gray-700 mb-1">Gültig bis 15.08.</p>
-                <span className="inline-block bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm mb-2">Prospekt Vorschau</span>
-                <p className="text-gray-700 mb-2">Wochenangebote entdecken</p>
-                <p className="text-gray-600 mb-4">
-                  Gültig von Montag, 09.08. bis Samstag, 15.08.<br />
-                  Blättern Sie durch unseren aktuellen Prospekt und entdecken Sie alle Angebote der Woche bequem von zu Hause aus.
-                </p>
-                <button className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors">
-                  Prospekt herunterladen (PDF)
-                </button>
-              </div>
-
-              <div className="bg-green-50 rounded-xl p-6 border border-green-200">
-                <h3 className="text-xl font-bold mb-2">Highlights der Woche</h3>
-                <p className="text-gray-700 mb-1 font-medium">Gültig bis Samstag</p>
-                <p className="text-gray-800 mb-3 font-semibold">Top Deal der Woche</p>
-                <p className="text-gray-700 mb-4">
-                  Frische-Aktion: Regionales Gemüse<br />
-                  Beim Kauf von regionalem Gemüse ab 15€ erhalten Sie eine praktische Baumwolltasche GRATIS dazu! Perfekt für Ihren nächsten Einkauf.
-                </p>
-                <Link
-                  to="/marktfinder"
-                  className="inline-block bg-green-600 text-white px-6 py-3 rounded hover:bg-green-700 transition-colors"
-                >
-                  Jetzt im Markt finden
-                </Link>
-              </div>
-            </div>
-
-            {/* Product Categories Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {productCategories.map((cat, idx) => (
-                <div key={idx} className="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden hover:shadow-xl transition-shadow flex flex-col">
-                  <div className="h-48 relative overflow-hidden flex items-center justify-center">
-                    <img src={cat.img} alt={cat.title} className="absolute inset-0 w-full h-full object-cover" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
-                    <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                      <h2 className="text-2xl font-bold mb-1">{cat.title}</h2>
-                      <span className="text-sm opacity-90 font-medium">{cat.subtitle}</span>
-                    </div>
-                  </div>
-                  <div className="p-6 flex-grow">
-                    <ul className="space-y-2 text-gray-700 mb-4">
-                      {cat.items.map((item, i) => (
-                        <li key={i} className="flex items-center">
-                          <span className="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                    <Link
-                      to="/marktfinder"
-                      className="mt-auto inline-block bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors text-center"
-                    >
-                      Produkt ansehen
-                    </Link>
+          <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {productCategories.map((cat) => (
+              <motion.div key={cat.title} whileHover={{ scale: 1.03 }} className="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden flex flex-col">
+                <div className="h-48 relative overflow-hidden flex items-center justify-center">
+                  <img src={cat.img} alt={cat.title} className="absolute inset-0 w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                    <h2 className="text-2xl font-bold mb-1">{cat.title}</h2>
+                    <span className="text-sm opacity-90 font-medium">{cat.subtitle}</span>
                   </div>
                 </div>
-              ))}
-            </div>
-
-            {/* Info Section */}
-            <div className="bg-[#2d5a27] rounded-3xl p-8 md:p-12 text-white text-center relative overflow-hidden mt-12">
-              <div className="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-green-500 rounded-full opacity-20 blur-2xl"></div>
-              <div className="absolute bottom-0 left-0 -mb-10 -ml-10 w-40 h-40 bg-green-500 rounded-full opacity-20 blur-2xl"></div>
-              <div className="relative z-10 max-w-3xl mx-auto">
-                <InfoIcon className="w-12 h-12 text-green-300 mx-auto mb-6" />
-                <h3 className="text-2xl md:text-3xl font-bold mb-4">Nicht das Richtige gefunden?</h3>
-                <p className="text-lg text-green-50 mb-8">
-                  Unser Sortiment variiert je nach Standort und Saison. Sprechen Sie unsere Mitarbeiter vor Ort an – wir bestellen gerne spezielle Wünsche für Sie!
-                </p>
-                <p className="text-sm text-green-200 italic mb-4">
-                  * Hinweis: Die Verfügbarkeit einzelner Produkte kann je nach Filiale variieren.
-                </p>
-                <Link
-                  to="/marktfinder"
-                  className="inline-block bg-green-600 text-white px-6 py-3 rounded hover:bg-green-700 transition-colors"
-                >
-                  Zum Marktfinder
-                </Link>
-              </div>
-            </div>
-          </div>
+                <div className="p-6 flex-grow">
+                  <ul className="space-y-2 text-gray-700 mb-4">
+                    {cat.items.map((item, i) => (
+                      <li key={i} className="flex items-center">
+                        <span className="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                  <Link to="/marktfinder" className="mt-auto inline-block bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors text-center">
+                    Produkt ansehen
+                  </Link>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
         )}
 
-        {/* Tab Content: Blog */}
-        {activeTab === 'blog' && (
-          <div className="space-y-8">{/* Existing Blog Content */}</div>
-        )}
-
-        {/* Tab Content: Brands */}
+        {/* Brands Tab */}
         {activeTab === 'brands' && (
-          <div>{/* Existing Brands Content */}</div>
+          <motion.div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-white p-6 rounded-xl shadow text-center">
+              <img src="/aqualina.png" className="h-20 mx-auto mb-4" />
+              <h3 className="font-bold text-xl mb-2">Aqualina</h3>
+              <p className="text-gray-600">Frisches Gebirgswasser in bester Qualität – erhältlich in still, medium und spritzig.</p>
+            </div>
+
+            <div className="bg-white p-6 rounded-xl shadow text-center">
+              <img src="/adelsdorfer.png" className="h-20 mx-auto mb-4" />
+              <h3 className="font-bold text-xl mb-2">Adelsdorfer</h3>
+              <p className="text-gray-600">Traditionell gebrautes Bier von höchster Qualität – vollmundig, ausgewogen und erfrischend.</p>
+            </div>
+
+            <div className="bg-white p-6 rounded-xl shadow text-center">
+              <img src="/fruchtgarten.png" className="h-20 mx-auto mb-4" />
+              <h3 className="font-bold text-xl mb-2">Fruchtgarten</h3>
+              <p className="text-gray-600">Erlesene Säfte voller natürlicher Frische und intensivem Geschmack zu einem attraktiven Preis.</p>
+            </div>
+          </motion.div>
         )}
       </div>
     </div>
   );
-}
+};
