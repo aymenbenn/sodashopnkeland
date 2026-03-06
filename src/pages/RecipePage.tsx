@@ -1,6 +1,7 @@
-import React from 'react'
-import { motion } from 'framer-motion'
-export const ServicePage: React.FC = () => {
+import React from "react";
+import { motion } from "framer-motion";
+
+export const RecipesPage: React.FC = () => {
   const topCards = [
     {
       title: 'Erfrischendes Zitronenwasser',
