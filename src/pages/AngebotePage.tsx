@@ -58,23 +58,29 @@ export function AngebotePage() {
     <main className="flex-grow bg-[#FFFBF5]">
 
       {/* HERO BANNER */}
-      <section className="relative w-full h-[230px] md:h-[280px] overflow-hidden">
-        <img src="/banner.png" alt="Banner" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-black/30"></div>
-        <div className="absolute inset-0 flex items-center justify-center px-4">
-          <div className="relative bg-orange-500/90 rounded-2xl px-8 py-6 max-w-3xl text-center shadow-xl overflow-hidden">
-            {/* Bubbles on top */}
-            <div className="absolute top-0 left-0 right-0">
-              <AnimatedBubbles />
-            </div>
+     <section className="relative bg-gradient-to-br from-[#FF7F50] via-orange-600 to-orange-500 text-white py-20 overflow-hidden">
+  {/* Animated bubbles on top */}
+  <AnimatedBubbles />
 
-            <h1 className="relative text-3xl md:text-4xl font-bold text-white mb-2">Aktuelle Angebote</h1>
-            <p className="relative text-white/90 text-lg">
-              Entdecken Sie unsere wöchentlichen Highlights und sparen Sie bei Ihrem nächsten Einkauf.
-            </p>
-          </div>
-        </div>
-      </section>
+  {/* Text content */}
+  <div className="relative z-10 text-center px-4 max-w-3xl mx-auto">
+    <h1 className="text-4xl md:text-5xl font-bold mb-4">
+      Aktuelle Angebote
+    </h1>
+    <p className="text-lg md:text-xl text-white/90">
+      Entdecken Sie unsere wöchentlichen Highlights und sparen Sie bei Ihrem nächsten Einkauf.
+    </p>
+  </div>
+
+  {/* Banner image placeholder */}
+  <div className="mt-12 max-w-5xl mx-auto">
+    <img
+      src="/banner.png" // replace with your image
+      alt="Banner"
+      className="w-full h-auto rounded-2xl shadow-lg object-cover"
+    />
+  </div>
+</section>
 
       {/* PROSPEKT */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
