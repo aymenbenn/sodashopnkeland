@@ -11,7 +11,7 @@ export const SortimentPage: React.FC = () => {
   return (
     <div className="w-full pb-20 relative">
       {/* Header with bubbles */}
-      <div className="relative bg-gradient-to-br from-[#2d5a27] via-orange-700 to-orange-600 py-16 text-white text-center overflow-hidden">
+      <div className="relative bg-gradient-to-br from-[#FF7F50] via-orange-700 to-orange-600 py-16 text-white text-center overflow-hidden">
         <AnimatedBubbles className="z-0" />
         <motion.div
           className="relative z-10"
@@ -27,9 +27,9 @@ export const SortimentPage: React.FC = () => {
       </div>
 
       {/* Tabs */}
-      <div className="bg-white border-b border-gray-200 shadow-sm sticky top-20 z-40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex space-x-4 md:space-x-8 overflow-x-auto">
+  <div className="bg-white border-b border-gray-200 shadow-sm sticky top-20 z-40">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="flex justify-center md:justify-start">
             {[
               { key: 'info', label: 'Informationen', icon: FileTextIcon },
               { key: 'blog', label: 'Blog & Rezepte', icon: BookOpenIcon, link: '/blog' },
