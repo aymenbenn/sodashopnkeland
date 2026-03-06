@@ -1,33 +1,50 @@
-import React from 'react';
-import { InfoIcon, Clock } from 'lucide-react';
-import { Link } from 'react-router-dom';
-
-export function SortimentPage() {
+import React from 'react'
+import { InfoIcon, Clock } from 'lucide-react'
+import { Link } from 'react-router-dom'
+export function AngebotePage() {
   const topDeal = {
     name: 'Frische-Aktion: Regionales Gemüse',
     desc: 'Beim Kauf von regionalem Gemüse ab 15€ erhalten Sie eine praktische Baumwolltasche GRATIS dazu! Perfekt für Ihren nächsten Einkauf.',
     img: '/promo.png',
     validity: 'Gültig bis Samstag',
     badge: 'Top Deal der Woche',
-  };
-
+  }
   const productCategories = [
     {
       title: 'Wasser',
       subtitle: '5 Kategorien',
-      items: ['Mineralwasser', 'Heilwasser', 'Tafelwasser', 'Aromatisiertes Wasser', 'Babywasser'],
+      items: [
+        'Mineralwasser',
+        'Heilwasser',
+        'Tafelwasser',
+        'Aromatisiertes Wasser',
+        'Babywasser',
+      ],
       img: '/wasser.png',
     },
     {
       title: 'Bier',
       subtitle: '6 Kategorien',
-      items: ['Pils', 'Weizen', 'Helles', 'Schwarzbier', 'Alkoholfreies Bier', 'Craft Beer'],
+      items: [
+        'Pils',
+        'Weizen',
+        'Helles',
+        'Schwarzbier',
+        'Alkoholfreies Bier',
+        'Craft Beer',
+      ],
       img: '/beer.png',
     },
     {
       title: 'Limonade & Cola',
       subtitle: '5 Kategorien',
-      items: ['Cola & Cola-Mix', 'Orangenlimonade', 'Zitronenlimonade', 'Fassbrause', 'Energy Drinks'],
+      items: [
+        'Cola & Cola-Mix',
+        'Orangenlimonade',
+        'Zitronenlimonade',
+        'Fassbrause',
+        'Energy Drinks',
+      ],
       img: '/limonade.png',
     },
     {
@@ -39,7 +56,13 @@ export function SortimentPage() {
     {
       title: 'Fruchthaltige Getränke',
       subtitle: '5 Kategorien',
-      items: ['Apfelsaft', 'Orangensaft', 'Multivitamin', 'Gemüsesäfte', 'Bio-Säfte'],
+      items: [
+        'Apfelsaft',
+        'Orangensaft',
+        'Multivitamin',
+        'Gemüsesäfte',
+        'Bio-Säfte',
+      ],
       img: '/fruchtsaft.jpeg',
     },
     {
@@ -48,8 +71,7 @@ export function SortimentPage() {
       items: ['Whisky', 'Gin', 'Wodka', 'Rum', 'Liköre', 'Kräuterschnaps'],
       img: '/spirituosen.jpg',
     },
-  ];
-
+  ]
   return (
     <main className="flex-grow bg-[#FFFBF5]">
       {/* Banner */}
@@ -59,9 +81,12 @@ export function SortimentPage() {
 
       {/* Aktuelle Angebote */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">Aktuelle Angebote</h1>
+        <h1 className="text-4xl md:text-5xl font-bold mb-4">
+          Aktuelle Angebote
+        </h1>
         <p className="text-xl text-gray-700 max-w-2xl mx-auto">
-          Entdecken Sie unsere wöchentlichen Highlights und sparen Sie bei Ihrem nächsten Einkauf.
+          Entdecken Sie unsere wöchentlichen Highlights und sparen Sie bei Ihrem
+          nächsten Einkauf.
         </p>
       </section>
 
@@ -69,15 +94,23 @@ export function SortimentPage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
         <div className="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100 p-6 md:p-12">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <img src="/promo.png" alt="Prospekt Vorschau" className="rounded-2xl w-full object-cover shadow-md" />
+            <img
+              src="/promo.png"
+              alt="Prospekt Vorschau"
+              className="rounded-2xl w-full object-cover shadow-md"
+            />
             <div className="space-y-4">
               <h2 className="text-2xl font-bold">Aktueller Prospekt</h2>
               <p className="text-gray-500">Gültig bis 15.08.</p>
-              <span className="inline-block bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Prospekt Vorschau</span>
+              <span className="inline-block bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">
+                Prospekt Vorschau
+              </span>
               <p className="text-gray-700">Wochenangebote entdecken</p>
               <p className="text-gray-600">
-                Gültig von Montag, 09.08. bis Samstag, 15.08.<br />
-                Blättern Sie durch unseren aktuellen Prospekt und entdecken Sie alle Angebote der Woche bequem von zu Hause aus.
+                Gültig von Montag, 09.08. bis Samstag, 15.08.
+                <br />
+                Blättern Sie durch unseren aktuellen Prospekt und entdecken Sie
+                alle Angebote der Woche bequem von zu Hause aus.
               </p>
               <button className="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors">
                 Prospekt herunterladen (PDF)
@@ -90,15 +123,24 @@ export function SortimentPage() {
       {/* Top Deal */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
         <div className="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100 p-6 md:p-12 flex flex-col md:flex-row items-center gap-8">
-          <img src={topDeal.img} alt="Top Deal" className="rounded-2xl w-full md:w-1/2 object-cover shadow-md" />
+          <img
+            src={topDeal.img}
+            alt="Top Deal"
+            className="rounded-2xl w-full md:w-1/2 object-cover shadow-md"
+          />
           <div className="flex-1 space-y-4">
-            <span className="bg-green-600 text-white px-3 py-1 rounded-full text-sm font-bold">{topDeal.badge}</span>
+            <span className="bg-green-600 text-white px-3 py-1 rounded-full text-sm font-bold">
+              {topDeal.badge}
+            </span>
             <p className="text-gray-500 flex items-center gap-2">
               <Clock className="w-4 h-4" /> {topDeal.validity}
             </p>
             <h3 className="text-3xl font-bold text-gray-900">{topDeal.name}</h3>
             <p className="text-gray-700">{topDeal.desc}</p>
-            <Link className="inline-block bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors">
+            <Link
+              to="/marktfinder"
+              className="inline-block bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors"
+            >
               Jetzt im Markt finden
             </Link>
           </div>
@@ -108,13 +150,22 @@ export function SortimentPage() {
       {/* Product Categories */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {productCategories.map((cat, idx) => (
-          <div key={idx} className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 flex flex-col">
+          <div
+            key={idx}
+            className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 flex flex-col"
+          >
             <div className="h-48 relative overflow-hidden flex items-center justify-center">
-              <img src={cat.img} alt={cat.title} className="absolute inset-0 w-full h-full object-cover" />
+              <img
+                src={cat.img}
+                alt={cat.title}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
               <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
                 <h3 className="text-2xl font-bold mb-1">{cat.title}</h3>
-                <span className="text-sm opacity-90 font-medium">{cat.subtitle}</span>
+                <span className="text-sm opacity-90 font-medium">
+                  {cat.subtitle}
+                </span>
               </div>
             </div>
             <div className="p-6 flex-grow">
@@ -144,19 +195,27 @@ export function SortimentPage() {
           <div className="absolute bottom-0 left-0 -mb-10 -ml-10 w-40 h-40 bg-green-500 rounded-full opacity-20 blur-2xl"></div>
           <div className="relative z-10 max-w-3xl mx-auto">
             <InfoIcon className="w-12 h-12 text-green-300 mx-auto mb-6" />
-            <h3 className="text-2xl md:text-3xl font-bold mb-4">Nicht das Richtige gefunden?</h3>
+            <h3 className="text-2xl md:text-3xl font-bold mb-4">
+              Nicht das Richtige gefunden?
+            </h3>
             <p className="text-lg text-green-50 mb-8">
-              Unser Sortiment variiert je nach Standort und Saison. Sprechen Sie unsere Mitarbeiter vor Ort an – wir bestellen gerne spezielle Wünsche für Sie!
+              Unser Sortiment variiert je nach Standort und Saison. Sprechen Sie
+              unsere Mitarbeiter vor Ort an – wir bestellen gerne spezielle
+              Wünsche für Sie!
             </p>
             <p className="text-sm text-green-200 italic mb-4">
-              * Hinweis: Die Verfügbarkeit einzelner Produkte kann je nach Filiale variieren.
+              * Hinweis: Die Verfügbarkeit einzelner Produkte kann je nach
+              Filiale variieren.
             </p>
-            <Link className="inline-block bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors">
+            <Link
+              to="/marktfinder"
+              className="inline-block bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors"
+            >
               Zum Marktfinder
             </Link>
           </div>
         </div>
       </section>
     </main>
-  );
+  )
 }
