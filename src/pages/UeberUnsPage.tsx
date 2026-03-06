@@ -125,7 +125,7 @@ export function UeberUnsPage() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <img
-              src="/gpt-image-1.5-high-fidelity_a_make_a_me_shop_drink.png"
+              src="/interior.png"
               alt="GetränkeLAND Markt außen"
               className="w-full h-64 object-cover rounded-2xl shadow-md" />
 
