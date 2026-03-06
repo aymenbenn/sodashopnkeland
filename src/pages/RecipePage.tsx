@@ -2,9 +2,9 @@ import React from 'react';
 
 export const RecipesPage: React.FC = () => {
   const recipes = [
-    { title: 'Apfelkuchen', desc: 'Leckerer deutscher Apfelkuchen', img: '/images/apfelkuchen.png' },
-    { title: 'Radler-Cocktail', desc: 'Erfrischender Sommerdrink', img: '/images/radler-cocktail.png' },
-    { title: 'Weinschorle', desc: 'Weinschorle mit frischen Früchten', img: '/images/weinschorle-recipe.png' },
+    { title: 'Apfelkuchen', desc: 'Leckerer deutscher Apfelkuchen', img: '/apfelkuchen.png' },
+    { title: 'Radler-Cocktail', desc: 'Erfrischender Sommerdrink', img: '/radler-cocktail.png' },
+    { title: 'Weinschorle', desc: 'Weinschorle mit frischen Früchten', img: '/weinschorle-recipe.png' },
   ];
 
   return (
