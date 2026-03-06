@@ -1,264 +1,175 @@
-import React from 'react';
-import {
-  TagIcon,
-  DownloadIcon,
-  ShoppingCartIcon,
-  FileTextIcon,
-  ArrowRightIcon } from
-'lucide-react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
 import { AnimatedBubbles } from '../components/AnimatedBubbles';
-export function AngebotePage() {
+import { InfoIcon, FileTextIcon, BookOpenIcon, BuildingIcon, ArrowRightIcon, Clock, ShoppingCart } from 'lucide-react';
+import { Link } from 'react-router-dom';
+
+export function SortimentPage() {
+  const [activeTab, setActiveTab] = useState<'info' | 'blog' | 'brands'>('info');
+
+  const topDeal = {
+    name: 'Regionales Gemüse',
+    desc: 'Beim Kauf ab 15€ erhalten Sie eine Baumwolltasche GRATIS',
+    img: '/banner.png',
+    discount: 'Gratis Tasche',
+    validity: 'Gültig bis Samstag',
+    color: 'from-green-500 to-green-600',
+  };
+
+  const productCategories = [
+    {
+      title: 'Wasser',
+      subtitle: '5 Kategorien',
+      items: ['Mineralwasser', 'Heilwasser', 'Tafelwasser', 'Aromatisiertes Wasser', 'Babywasser'],
+      img: '/wasser.png',
+    },
+    {
+      title: 'Bier',
+      subtitle: '6 Kategorien',
+      items: ['Pils', 'Weizen', 'Helles', 'Schwarzbier', 'Alkoholfreies Bier', 'Craft Beer'],
+      img: '/beer.png',
+    },
+    {
+      title: 'Limonade & Cola',
+      subtitle: '5 Kategorien',
+      items: ['Cola & Cola-Mix', 'Orangenlimonade', 'Zitronenlimonade', 'Fassbrause', 'Energy Drinks'],
+      img: '/limonade.png',
+    },
+    {
+      title: 'Wein & Sekt',
+      subtitle: '5 Kategorien',
+      items: ['Rotwein', 'Weißwein', 'Rosé', 'Sekt & Prosecco', 'Glühwein'],
+      img: '/wein.jpg',
+    },
+    {
+      title: 'Fruchthaltige Getränke',
+      subtitle: '5 Kategorien',
+      items: ['Apfelsaft', 'Orangensaft', 'Multivitamin', 'Gemüsesäfte', 'Bio-Säfte'],
+      img: '/fruchtsaft.jpeg',
+    },
+    {
+      title: 'Spirituosen',
+      subtitle: '6 Kategorien',
+      items: ['Whisky', 'Gin', 'Wodka', 'Rum', 'Liköre', 'Kräuterschnaps'],
+      img: '/spirituosen.jpg',
+    },
+  ];
+
   return (
     <div className="w-full pb-20">
       {/* Header */}
-      <div className="relative bg-gradient-to-br from-[#2d5a27] via-green-700 to-green-600 py-16 text-white text-center overflow-hidden">
+      <section className="relative bg-gradient-to-br from-[#2d5a27] via-green-700 to-green-600 text-white py-16 text-center overflow-hidden">
         <AnimatedBubbles />
-        <div className="relative z-10">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            Aktuelle Angebote
-          </h1>
-          <p className="text-xl text-green-50 max-w-2xl mx-auto px-4">
-            Entdecken Sie unsere wöchentlichen Highlights und sparen Sie bei
-            Ihrem nächsten Einkauf.
+        <div className="relative z-10 max-w-3xl mx-auto px-4">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Unser Sortiment</h1>
+          <p className="text-xl text-green-50 mb-8">
+            Entdecken Sie unsere wöchentlichen Highlights und sparen Sie bei Ihrem nächsten Einkauf.
           </p>
         </div>
-      </div>
+      </section>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
-        {/* Section 1: Prospekt */}
-        <div className="mb-16">
-          <div className="flex items-center mb-6">
-            <FileTextIcon className="w-8 h-8 text-[#2d5a27] mr-3" />
-            <h2 className="text-3xl font-bold text-[#2d5a27]">
-              Aktueller Prospekt
-            </h2>
-          </div>
-          <div className="bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden flex flex-col md:flex-row">
-            <div className="md:w-1/3 bg-slate-100 p-8 flex items-center justify-center border-r border-gray-100">
-              <div className="w-48 h-64 bg-white shadow-md border border-gray-200 rounded flex flex-col items-center justify-center text-gray-400 relative overflow-hidden">
-                <div className="absolute top-0 w-full bg-red-600 text-white text-xs font-bold text-center py-1 z-10">
-                  Gültig bis 15.08.
-                </div>
-                <img
-                  src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                  alt="Prospekt Vorschau"
-                  className="absolute inset-0 w-full h-full object-cover opacity-80" />
-
-                <div className="absolute inset-0 bg-black/20 flex flex-col items-center justify-center">
-                  <FileTextIcon className="w-12 h-12 mb-2 text-white" />
-                  <span className="font-medium text-white shadow-sm">
-                    Vorschau
-                  </span>
-                </div>
-              </div>
-            </div>
-            <div className="md:w-2/3 p-8 md:p-12 flex flex-col justify-center">
-              <h3 className="text-2xl font-bold text-[#2d5a27] mb-2">
-                Wochenangebote entdecken
-              </h3>
-              <p className="text-gray-600 mb-6">
-                Gültig von Montag, 09.08. bis Samstag, 15.08.
-              </p>
-              <p className="text-gray-600 mb-8 max-w-lg">
-                Blättern Sie durch unseren aktuellen Prospekt und entdecken Sie
-                alle Angebote der Woche bequem von zu Hause aus.
-              </p>
-              <button className="inline-flex items-center justify-center px-8 py-4 bg-[#2d5a27] text-white font-bold rounded-xl hover:bg-green-800 transition-colors shadow-md w-max">
-                <DownloadIcon className="w-5 h-5 mr-2" />
-                Prospekt herunterladen (PDF)
-              </button>
-            </div>
+      {/* Tabs */}
+      <div className="bg-white border-b border-gray-200 shadow-sm sticky top-20 z-40">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex space-x-8 overflow-x-auto">
+            <button
+              onClick={() => setActiveTab('info')}
+              className={`py-4 px-2 border-b-2 font-bold flex items-center whitespace-nowrap transition-colors ${
+                activeTab === 'info' ? 'border-[#2d5a27] text-[#2d5a27]' : 'border-transparent text-gray-500 hover:text-green-700'
+              }`}
+            >
+              <FileTextIcon className="w-4 h-4 mr-2" /> Informationen
+            </button>
+            <button
+              onClick={() => setActiveTab('blog')}
+              className={`py-4 px-2 border-b-2 font-bold flex items-center whitespace-nowrap transition-colors ${
+                activeTab === 'blog' ? 'border-[#2d5a27] text-[#2d5a27]' : 'border-transparent text-gray-500 hover:text-green-700'
+              }`}
+            >
+              <BookOpenIcon className="w-4 h-4 mr-2" /> Blog & Rezepte
+            </button>
+            <button
+              onClick={() => setActiveTab('brands')}
+              className={`py-4 px-2 border-b-2 font-bold flex items-center whitespace-nowrap transition-colors ${
+                activeTab === 'brands' ? 'border-[#2d5a27] text-[#2d5a27]' : 'border-transparent text-gray-500 hover:text-green-700'
+              }`}
+            >
+              <BuildingIcon className="w-4 h-4 mr-2" /> Unsere Marken
+            </button>
           </div>
         </div>
+      </div>
 
-        {/* Section 2: Highlights */}
-        <div className="mb-16">
-          <div className="flex items-center mb-6">
-            <TagIcon className="w-8 h-8 text-[#2d5a27] mr-3" />
-            <h2 className="text-3xl font-bold text-[#2d5a27]">
-              Highlights der Woche
-            </h2>
-          </div>
-          {/* Top Deal */}
-          <div className="bg-white rounded-3xl shadow-xl overflow-hidden border border-green-100 mb-8 relative">
-            <div className="absolute top-0 right-0 bg-red-600 text-white px-6 py-2 rounded-bl-2xl font-bold z-10 shadow-md">
-              Gültig bis Samstag
-            </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 space-y-12">
+        {/* Top Deal Section */}
+        {activeTab === 'info' && (
+          <div className="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100">
             <div className="grid grid-cols-1 lg:grid-cols-2">
-              <div className="p-8 lg:p-12 flex flex-col justify-center order-2 lg:order-1">
-                <div className="flex items-center mb-4">
-                  <TagIcon className="w-6 h-6 text-green-600 mr-2" />
-                  <span className="text-green-600 font-bold uppercase tracking-wider text-sm">
+              <div className={`relative flex items-center justify-center overflow-hidden bg-gradient-to-br ${topDeal.color} p-8`}>
+                <img
+                  src={topDeal.img}
+                  alt={topDeal.name}
+                  className="relative z-10 w-full max-w-md h-auto object-contain transform hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute top-4 left-4 bg-green-700 text-white font-bold px-3 py-1 rounded-lg shadow-md z-20">
+                  {topDeal.discount}
+                </div>
+              </div>
+              <div className="p-8 md:p-12 flex flex-col justify-center">
+                <div className="flex items-center gap-3 mb-6">
+                  <span className="bg-green-600 text-white px-3 py-1 rounded-full text-sm font-bold shadow-md">
                     Top Deal der Woche
                   </span>
+                  <span className="flex items-center text-gray-500 text-sm font-medium">
+                    <Clock className="w-4 h-4 mr-1" /> {topDeal.validity}
+                  </span>
                 </div>
-                <h3 className="text-3xl md:text-4xl font-bold text-[#2d5a27] mb-4">
-                  Frische-Aktion: Regionales Gemüse
-                </h3>
-                <p className="text-lg text-gray-600 mb-8">
-                  Beim Kauf von regionalem Gemüse ab 15€ erhalten Sie eine
-                  praktische Baumwolltasche{' '}
-                  <strong className="text-green-600">GRATIS</strong> dazu!
-                  Perfekt für Ihren nächsten Einkauf.
-                </p>
+                <h2 className="text-3xl md:text-4xl font-bold text-green-900 mb-4">{topDeal.name}</h2>
+                <p className="text-gray-700 text-lg mb-8 leading-relaxed">{topDeal.desc}</p>
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <button className="flex-1 flex items-center justify-center px-6 py-3 bg-[#2d5a27] text-white font-bold rounded-xl hover:bg-green-800 transition-colors shadow-md">
-                    <ShoppingCartIcon className="w-5 h-5 mr-2" />
-                    Jetzt im Markt finden
-                  </button>
+                  <Link className="flex-1 bg-green-600 text-white font-bold py-3 px-6 rounded-xl hover:bg-green-700 transition-colors flex items-center justify-center">
+                    <ShoppingCart className="w-5 h-5 mr-2" /> Jetzt im Markt finden
+                  </Link>
+                  <Link className="flex-1 border-2 border-green-700 text-green-700 font-bold py-3 px-6 rounded-xl hover:bg-green-50 transition-colors flex items-center justify-center">
+                    Prospekt (PDF)
+                  </Link>
                 </div>
               </div>
-              <div className="relative h-64 lg:h-auto bg-green-50 order-1 lg:order-2">
-                <img
-                  src="https://images.unsplash.com/photo-1566385101042-1a0aa0c1268c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                  alt="Gemüse Angebot"
-                  className="absolute inset-0 w-full h-full object-cover" />
-
-              </div>
             </div>
           </div>
+        )}
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Offer 1 */}
-            <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-100 relative overflow-hidden group hover:shadow-xl transition-shadow">
-              <div className="absolute top-4 right-4 bg-red-600 text-white font-bold px-3 py-1 rounded-full z-10">
-                -20%
+        {/* Product Categories Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {productCategories.map((cat, idx) => (
+            <div key={idx} className="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden hover:shadow-xl transition-shadow flex flex-col">
+              <div className="h-48 relative overflow-hidden flex items-center justify-center">
+                <img src={cat.img} alt={cat.title} className="absolute inset-0 w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                  <h2 className="text-2xl font-bold mb-1">{cat.title}</h2>
+                  <span className="text-sm opacity-90 font-medium">{cat.subtitle}</span>
+                </div>
               </div>
-              <div className="text-6xl text-center mb-6 mt-4 transform group-hover:scale-110 transition-transform">
-                🍎
-              </div>
-              <h4 className="text-xl font-bold text-[#2d5a27] mb-2 text-center">
-                Äpfel aus der Region
-              </h4>
-              <p className="text-gray-500 text-center mb-6">2kg Netz</p>
-              <div className="flex justify-center items-end gap-3">
-                <span className="text-gray-400 line-through text-lg">
-                  Statt 3.99 €
-                </span>
-                <span className="text-3xl font-bold text-green-600">
-                  2.99 €
-                </span>
+              <div className="p-6 flex-grow">
+                <ul className="space-y-2 text-gray-700 mb-4">
+                  {cat.items.map((item, i) => (
+                    <li key={i} className="flex items-center">
+                      <span className="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  to="/marktfinder"
+                  className="mt-auto inline-block bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors text-center"
+                >
+                  Produkt ansehen
+                </Link>
               </div>
             </div>
-
-            {/* Offer 2 */}
-            <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-100 relative overflow-hidden group hover:shadow-xl transition-shadow">
-              <div className="absolute top-4 right-4 bg-red-600 text-white font-bold px-3 py-1 rounded-full z-10">
-                -15%
-              </div>
-              <div className="text-6xl text-center mb-6 mt-4 transform group-hover:scale-110 transition-transform">
-                🥛
-              </div>
-              <h4 className="text-xl font-bold text-[#2d5a27] mb-2 text-center">
-                Frische Vollmilch
-              </h4>
-              <p className="text-gray-500 text-center mb-6">
-                1 Liter, 3.5% Fett
-              </p>
-              <div className="flex justify-center items-end gap-3">
-                <span className="text-gray-400 line-through text-lg">
-                  Statt 1.49 €
-                </span>
-                <span className="text-3xl font-bold text-green-600">
-                  1.19 €
-                </span>
-              </div>
-            </div>
-
-            {/* Offer 3 */}
-            <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-100 relative overflow-hidden group hover:shadow-xl transition-shadow">
-              <div className="absolute top-4 right-4 bg-red-600 text-white font-bold px-3 py-1 rounded-full z-10">
-                -25%
-              </div>
-              <div className="text-6xl text-center mb-6 mt-4 transform group-hover:scale-110 transition-transform">
-                🍞
-              </div>
-              <h4 className="text-xl font-bold text-[#2d5a27] mb-2 text-center">
-                Bauernbrot
-              </h4>
-              <p className="text-gray-500 text-center mb-6">500g Laib</p>
-              <div className="flex justify-center items-end gap-3">
-                <span className="text-gray-400 line-through text-lg">
-                  Statt 2.99 €
-                </span>
-                <span className="text-3xl font-bold text-green-600">
-                  2.22 €
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Section 3: Produktpalette */}
-        <div>
-          <h2 className="text-3xl font-bold text-[#2d5a27] mb-6">
-            Unsere Produktpalette
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            <Link
-              to="/sortiment"
-              className="group block h-32 rounded-xl overflow-hidden relative shadow-md hover:shadow-lg transition-all transform hover:-translate-y-1">
-
-              <div className="absolute inset-0 bg-gradient-to-br from-green-500 to-green-700 opacity-90 group-hover:opacity-100 transition-opacity"></div>
-              <div className="absolute inset-0 flex flex-col items-center justify-center text-white p-4 text-center">
-                <span className="font-bold text-lg">Obst & Gemüse</span>
-                <ArrowRightIcon className="w-4 h-4 mt-2 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all" />
-              </div>
-            </Link>
-            <Link
-              to="/sortiment"
-              className="group block h-32 rounded-xl overflow-hidden relative shadow-md hover:shadow-lg transition-all transform hover:-translate-y-1">
-
-              <div className="absolute inset-0 bg-gradient-to-br from-yellow-400 to-orange-400 opacity-90 group-hover:opacity-100 transition-opacity"></div>
-              <div className="absolute inset-0 flex flex-col items-center justify-center text-white p-4 text-center">
-                <span className="font-bold text-lg">Backwaren</span>
-                <ArrowRightIcon className="w-4 h-4 mt-2 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all" />
-              </div>
-            </Link>
-            <Link
-              to="/sortiment"
-              className="group block h-32 rounded-xl overflow-hidden relative shadow-md hover:shadow-lg transition-all transform hover:-translate-y-1">
-
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-300 to-blue-500 opacity-90 group-hover:opacity-100 transition-opacity"></div>
-              <div className="absolute inset-0 flex flex-col items-center justify-center text-white p-4 text-center">
-                <span className="font-bold text-lg">Molkerei</span>
-                <ArrowRightIcon className="w-4 h-4 mt-2 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all" />
-              </div>
-            </Link>
-            <Link
-              to="/sortiment"
-              className="group block h-32 rounded-xl overflow-hidden relative shadow-md hover:shadow-lg transition-all transform hover:-translate-y-1">
-
-              <div className="absolute inset-0 bg-gradient-to-br from-red-400 to-red-600 opacity-90 group-hover:opacity-100 transition-opacity"></div>
-              <div className="absolute inset-0 flex flex-col items-center justify-center text-white p-4 text-center">
-                <span className="font-bold text-lg">Fleisch</span>
-                <ArrowRightIcon className="w-4 h-4 mt-2 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all" />
-              </div>
-            </Link>
-            <Link
-              to="/sortiment"
-              className="group block h-32 rounded-xl overflow-hidden relative shadow-md hover:shadow-lg transition-all transform hover:-translate-y-1">
-
-              <div className="absolute inset-0 bg-gradient-to-br from-amber-200 to-yellow-500 opacity-90 group-hover:opacity-100 transition-opacity"></div>
-              <div className="absolute inset-0 flex flex-col items-center justify-center text-white p-4 text-center">
-                <span className="font-bold text-lg">Getränke</span>
-                <ArrowRightIcon className="w-4 h-4 mt-2 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all" />
-              </div>
-            </Link>
-            <Link
-              to="/sortiment"
-              className="group block h-32 rounded-xl overflow-hidden relative shadow-md hover:shadow-lg transition-all transform hover:-translate-y-1">
-
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-400 to-purple-600 opacity-90 group-hover:opacity-100 transition-opacity"></div>
-              <div className="absolute inset-0 flex flex-col items-center justify-center text-white p-4 text-center">
-                <span className="font-bold text-lg">Drogerie</span>
-                <ArrowRightIcon className="w-4 h-4 mt-2 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all" />
-              </div>
-            </Link>
-          </div>
+          ))}
         </div>
       </div>
-    </div>);
-
+    </div>
+  );
 }
