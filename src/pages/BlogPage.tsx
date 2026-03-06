@@ -1,7 +1,6 @@
 // src/pages/BlogPage.tsx
 import React from 'react';
-import { Navbar } from '../components/Navbar';
-import { Footer } from '../components/Footer';
+
 import { FloatingContactBar } from '../components/ContactIconButtons';
 import { productCategories } from '../data/productCategories'; // import data
 
